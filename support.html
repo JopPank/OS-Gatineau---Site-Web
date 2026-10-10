@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="{ lang: 'fr' }" :lang="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Gatineau - Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased" data-page-language="support">
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b border-[#eadb9d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-14 w-auto object-contain rounded-full shadow-sm">
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg md:text-xl tracking-tight leading-tight text-slate-900">OS Gatineau</span>
+                    <span class="text-xs text-slate-500 font-medium">Olympiques Spéciaux Québec</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center justify-center gap-6 font-semibold text-[11px] xl:text-xs tracking-wide whitespace-nowrap">
+                <a href="index.html#about" class="text-slate-700 hover:text-[#C9A227] transition">Mission</a>
+                <a href="index.html#events" class="text-slate-700 hover:text-[#C9A227] transition">Nouvelles</a>
+                <a href="index.html#sports" class="text-slate-700 hover:text-[#C9A227] transition">Participez</a>
+                <a href="athletes.html" class="text-slate-700 hover:text-[#C9A227] transition">Athlètes</a>
+                <a href="portal.html" class="text-slate-700 hover:text-[#C9A227] transition">Espace athlète</a>
+                <a href="index.html#gallery" class="text-slate-700 hover:text-[#C9A227] transition">Galerie</a>
+                <a href="support.html" class="text-[#C9A227] font-bold">Soutien</a>
+                <a href="index.html#contact" class="text-slate-700 hover:text-[#C9A227] transition">Nous joindre</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <button type="button" data-language-toggle class="flex items-center space-x-1 text-xs font-bold border border-gray-300 rounded-full px-3 py-1.5 hover:bg-gray-100 transition" aria-label="Switch to English">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span x-text="lang === 'fr' ? 'EN' : 'FR'"></span>
+                </button>
+                <a href="#support" class="bg-[#C9A227] text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow hover:bg-[#b38e1d] transition">Faire un don</a>
+            </div>
+            <div class="flex items-center gap-3 md:hidden">
+                <button type="button" data-language-toggle class="text-xs font-bold border border-gray-300 rounded-full px-2.5 py-1.5" aria-label="Switch to English">EN</button>
+                <button type="button" data-menu-toggle aria-controls="support-mobile-menu" aria-expanded="false" class="text-[#12314A] text-2xl leading-none" aria-label="Ouvrir le menu">&#9776;</button>
+            </div>
+        </div>
+        <nav id="support-mobile-menu" class="site-mobile-menu md:hidden bg-white px-4 pb-4" aria-label="Navigation mobile">
+            <a href="index.html#about" class="font-semibold text-gray-700">Mission</a>
+            <a href="index.html#events" class="font-semibold text-gray-700">Nouvelles</a>
+            <a href="index.html#sports" class="font-semibold text-gray-700">Participez</a>
+            <a href="athletes.html" class="font-semibold text-gray-700">Athlètes</a>
+            <a href="portal.html" class="font-bold text-[#12314A]">Espace athlète</a>
+            <a href="index.html#gallery" class="font-semibold text-gray-700">Galerie</a>
+            <a href="index.html#contact" class="font-semibold text-gray-700">Nous joindre</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="py-20 bg-gradient-to-r from-[#12314A] via-[#1a3d5e] to-[#0d263b] text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-[#f5e7ae] font-bold uppercase tracking-wider text-xs">Soutien</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold mt-3">Aidez-nous à créer plus d’opportunités sportives</h1>
+                <p class="max-w-3xl mx-auto mt-5 text-[#e8edf4] text-lg leading-relaxed">
+                    Votre contribution aide à offrir des activités sportives inclusives, sécuritaires et inspirantes à nos athlètes et à leur communauté.
+                </p>
+            </div>
+        </section>
+
+        <section id="support" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-[#f7f3ea] border border-[#eadb9d] rounded-2xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <p class="text-xs font-bold uppercase tracking-wider text-[#12314A]">Don</p>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Faire un don</h2>
+                    <p class="text-gray-600 mt-3 leading-relaxed">Votre générosité soutient l’équipement, les activités, les déplacements et les opportunités de participation de nos athlètes.</p>
+                    <a href="mailto:olympiquesspeciaux.gatineau@gmail.com?subject=Don%20%C3%A0%20OS%20Gatineau" class="inline-block mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38e1d] transition">Envoyer un message</a>
+                </div>
+
+                <div class="bg-[#f7f3ea] border border-[#eadb9d] rounded-2xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <p class="text-xs font-bold uppercase tracking-wider text-[#12314A]">Bénévolat</p>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Devenir bénévole</h2>
+                    <p class="text-gray-600 mt-3 leading-relaxed">Aidez nos athlètes à participer, grandir et réussir en tant qu’entraîneur, accompagnateur, organisateur ou soutien communautaire.</p>
+                    <a href="mailto:olympiquesspeciaux.gatineau@gmail.com?subject=B%C3%A9n%C3%A9vole%20OS%20Gatineau" class="inline-block mt-5 bg-[#12314A] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#0d263b] transition">Joindre l’équipe</a>
+                </div>
+
+                <div class="bg-[#f7f3ea] border border-[#eadb9d] rounded-2xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <p class="text-xs font-bold uppercase tracking-wider text-[#12314A]">Partenariat</p>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Soutenir la mission</h2>
+                    <p class="text-gray-600 mt-3 leading-relaxed">Nous travaillons avec des partenaires locaux qui font la différence dans la création d’un environnement plus inclusif et accessible.</p>
+                    <a href="index.html#community" class="inline-block mt-5 bg-slate-900 text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-slate-800 transition">Voir nos partenaires</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50 border-t border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-[#12314A] font-bold uppercase tracking-wider text-xs">Impact</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mt-1">Pourquoi votre soutien compte</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white border border-[#eadb9d] rounded-2xl p-6 shadow-sm">
+                        <div class="text-4xl font-extrabold text-[#12314A]">120+</div>
+                        <p class="text-gray-600 mt-2">Athlètes impliqués</p>
+                    </div>
+                    <div class="bg-white border border-[#eadb9d] rounded-2xl p-6 shadow-sm">
+                        <div class="text-4xl font-extrabold text-[#12314A]">8+</div>
+                        <p class="text-gray-600 mt-2">Sports offerts</p>
+                    </div>
+                    <div class="bg-white border border-[#eadb9d] rounded-2xl p-6 shadow-sm">
+                        <div class="text-4xl font-extrabold text-[#12314A]">1,500+</div>
+                        <p class="text-gray-600 mt-2">Bénévoles et encadrants</p>
+                    </div>
+                    <div class="bg-white border border-[#eadb9d] rounded-2xl p-6 shadow-sm">
+                        <div class="text-4xl font-extrabold text-[#12314A]">100%</div>
+                        <p class="text-gray-600 mt-2">Accueillant et inclusif</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-16 w-auto object-contain rounded-full bg-white p-0.5">
+                        <span class="font-extrabold text-lg text-white">OS Gatineau</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Section locale affiliée à Olympiques Spéciaux Québec, offrant des programmes sportifs adaptés dans la région de l’Outaouais.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4">Contactez-nous</h4>
+                    <p class="text-gray-400 text-sm">Gatineau, QC, Canada</p>
+                    <p class="text-gray-400 text-sm mt-2">Email: olympiquesspeciaux.gatineau@gmail.com</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4">Liens rapides</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html#about" class="hover:text-white transition">Mission</a></li>
+                        <li><a href="index.html#events" class="hover:text-white transition">Nouvelles</a></li>
+                        <li><a href="index.html#sports" class="hover:text-white transition">Participez</a></li>
+                        <li><a href="index.html#gallery" class="hover:text-white transition">Galerie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 OS Gatineau. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+    <script src="script.js"></script>
+</html>

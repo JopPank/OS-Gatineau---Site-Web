@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription au programme adapté - OS Gatineau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#f7f3ea] text-slate-800 antialiased">
+    <header class="bg-white shadow-md border-b border-[#eadb9d]">
+        <div class="max-w-6xl mx-auto px-4 py-5 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-12 w-auto object-contain rounded-full bg-white p-0.5">
+                <div>
+                    <div class="text-base font-extrabold text-slate-900">OS Gatineau</div>
+                    <div class="text-[10px] uppercase tracking-wider text-slate-500">Inscription au programme</div>
+                </div>
+            </a>
+            <a href="fitness-program.html" class="text-[#12314A] font-bold text-sm hover:text-[#0d263b] transition">Voir le programme</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-[#eadb9d] shadow-lg overflow-hidden">
+            <div class="bg-[#12314A] px-6 py-7 sm:px-8">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#f4e0a5]">OS Gatineau</p>
+                <h1 class="mt-2 text-3xl font-extrabold text-white">Inscription au programme de préparation physique adaptée</h1>
+                <p class="mt-3 text-sm text-slate-200">Ce formulaire sert à enregistrer l’intérêt d’un athlète ou d’un parent pour participer au programme préparatoire de condition physique, en collaboration avec l’Université du Québec en Outaouais.</p>
+            </div>
+
+            <form id="programRegistrationForm" class="space-y-6 px-6 py-6 sm:px-8">
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">Information de l’athlète</h2>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Nom complet</label>
+                            <input name="fullName" type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Date de naissance</label>
+                            <input name="dob" type="date" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Courriel</label>
+                            <input name="email" type="email" required autocomplete="email" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Téléphone</label>
+                            <input name="phone" type="tel" autocomplete="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">Parent ou tuteur</h2>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Nom du parent / tuteur</label>
+                            <input name="guardianName" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Courriel du parent / tuteur</label>
+                            <input name="guardianEmail" type="email" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">Détails de participation</h2>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Profil de l’athlète</label>
+                            <select name="profile" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="DI">DI</option>
+                                <option value="TSA">TSA</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Sport ou discipline</label>
+                            <input name="sport" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Disponibilités / moments préférés</label>
+                        <textarea name="availability" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]" placeholder="Ex. : Lundi et mercredi soirs, fin de semaine, etc."></textarea>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">Informations complémentaires</h2>
+                    <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Renseignements utiles ou besoins spécifiques</label>
+                        <textarea name="notes" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]" placeholder="Partagez toute information utile pour l’équipe : besoins d’accommodement, observations, questions, objectifs personnels, etc."></textarea>
+                    </div>
+                </section>
+
+                <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4 text-sm text-gray-700">
+                    En soumettant ce formulaire, votre application de courriel s’ouvrira avec le message prérempli pour l’équipe d’OS Gatineau.
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 bg-[#12314A] hover:bg-[#0d263b] text-white font-bold py-3 rounded-lg text-sm tracking-wide transition shadow hover:-translate-y-0.5 hover:shadow-lg">
+                        Soumettre mon inscription
+                    </button>
+                    <a href="fitness-program.html" class="flex-1 text-center bg-white border border-gray-300 hover:bg-gray-50 text-[#12314A] font-bold py-3 rounded-lg text-sm tracking-wide transition shadow hover:-translate-y-0.5 hover:shadow-lg">
+                        Voir le programme
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('programRegistrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const values = {
+                fullName: form.fullName.value.trim(),
+                dob: form.dob.value.trim(),
+                email: form.email.value.trim(),
+                phone: form.phone.value.trim(),
+                guardianName: form.guardianName.value.trim(),
+                guardianEmail: form.guardianEmail.value.trim(),
+                profile: form.profile.value.trim(),
+                sport: form.sport.value.trim(),
+                availability: form.availability.value.trim(),
+                notes: form.notes.value.trim()
+            };
+
+            const body = [
+                'Inscription au programme de préparation physique adaptée - OS Gatineau',
+                '',
+                'Nom complet: ' + values.fullName,
+                'Date de naissance: ' + values.dob,
+                'Courriel: ' + values.email,
+                'Téléphone: ' + (values.phone || 'Non fourni'),
+                'Nom du parent / tuteur: ' + (values.guardianName || 'Non fourni'),
+                'Courriel du parent / tuteur: ' + (values.guardianEmail || 'Non fourni'),
+                'Profil de l’athlète: ' + (values.profile || 'Non précisé'),
+                'Sport ou discipline: ' + (values.sport || 'Non précisé'),
+                'Disponibilités / moments préférés: ' + (values.availability || 'Non précisées'),
+                '',
+                'Informations complémentaires:',
+                values.notes || 'Aucune information supplémentaire.'
+            ].join('\n');
+
+            const mailto = 'mailto:olympiquesspeciaux.gatineau@gmail.com?subject=' + encodeURIComponent('Inscription au programme de préparation physique adaptée - OS Gatineau') + '&body=' + encodeURIComponent(body);
+            window.location.href = mailto;
+        });
+    </script>
+</body>
+</html>

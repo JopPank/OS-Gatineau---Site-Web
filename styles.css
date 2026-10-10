@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+    --os-navy: #12314a;
+    --os-navy-deep: #0d263b;
+    --os-gold: #c9a227;
+    --os-gold-light: #f5e7ae;
+    --os-cream: #f7f3ea;
+    --os-ink: #162533;
+    --os-line: #eadb9d;
+}
+
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--os-ink);
+    background-color: var(--os-cream);
+}
+h1, h2, h3, h4, .font-extrabold, .font-black { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+::selection { background: var(--os-gold-light); color: var(--os-navy-deep); }
+:focus-visible { outline: 3px solid #f0c94b; outline-offset: 3px; }
+[x-cloak] { display: none !important; }
+.skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -5rem;
+    z-index: 100;
+    background: var(--os-navy);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+}
+.skip-link:focus { top: 1rem; }
+
+header { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.94) !important; }
+header nav a {
+    font-size: 14px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+header nav {
+    flex: 1 1 auto;
+    justify-content: space-between !important;
+    gap: 0.65rem !important;
+    margin: 0 1.5rem;
+}
+section { scroll-margin-top: 5.5rem; }
+
+/* Add a little depth to repeated content without changing the existing layout. */
+main > section, body > section { position: relative; }
+img { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: no-preference) {
+    main > section > div, body > section > div { animation: rise-in 600ms ease both; }
+}
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.site-mobile-menu {
+    display: none;
+    border-top: 1px solid var(--os-line);
+}
+.site-mobile-menu.is-open { display: block; }
+.site-mobile-menu a { min-height: 44px; display: flex; align-items: center; }
+
+.filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    justify-content: center;
+    margin: 1.5rem auto 2.5rem;
+}
+.filter-button {
+    border: 1px solid #d8dee5;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--os-navy);
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.65rem 1rem;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.filter-button:hover { transform: translateY(-1px); }
+.filter-button.is-active, .filter-button:hover { background: var(--os-navy); color: #fff; }
+.athlete-card.is-hidden { display: none; }
+
+.form-status { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 0.75rem; font-size: 0.9rem; }
+.form-status.is-success { background: #e7f6ed; border: 1px solid #b8e2c6; color: #176b37; }
+
+@media (max-width: 767px) {
+    .filter-toolbar { margin-bottom: 1.75rem; }
+    .filter-button { flex: 1 1 auto; }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concepts de logos - Gatineau Sport Inclusif</title>
+    <style>
+        :root { --navy: #12314a; --gold: #c9a227; --coral: #e76f51; --cream: #f7f3ea; --ink: #172431; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 40px 20px; background: var(--cream); color: var(--ink); font-family: Arial, sans-serif; }
+        main { max-width: 1100px; margin: auto; }
+        h1 { color: var(--navy); font-size: clamp(2rem, 5vw, 3.5rem); margin: 0 0 8px; }
+        .intro { margin: 0 0 30px; color: #51606b; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        article { background: white; border: 1px solid #e1d7b7; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 24px #12314a12; }
+        .art { min-height: 310px; display: grid; place-items: center; padding: 28px; }
+        .shield { background: var(--navy); color: white; }
+        .circle { background: #fff; color: var(--navy); }
+        .wordmark { background: #f0e5b9; color: var(--navy); }
+        .details { padding: 20px; border-top: 1px solid #eee; }
+        h2 { margin: 0 0 6px; font-size: 1.1rem; }
+        p { margin: 0; line-height: 1.5; color: #596875; }
+        svg { width: 100%; height: 220px; overflow: visible; }
+        @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .art { min-height: 260px; } }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Gatineau Sport Inclusif</h1>
+    <p class="intro">Trois directions visuelles originales pour remplacer le logo actuel pendant la présentation.</p>
+    <section class="grid" aria-label="Concepts de logos">
+        <article>
+            <div class="art shield">
+                <svg viewBox="0 0 240 240" role="img" aria-label="Concept de logo avec un bouclier et une figure en mouvement">
+                    <path d="M120 12 211 43v76c0 57-36 91-91 109-55-18-91-52-91-109V43z" fill="none" stroke="#c9a227" stroke-width="8"/>
+                    <circle cx="120" cy="104" r="37" fill="#c9a227"/>
+                    <path d="M120 75v58M120 94 85 77M120 94l35-17M120 114 88 142M120 114l32 28M120 68a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z" fill="none" stroke="#12314a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="120" y="182" text-anchor="middle" fill="white" font-size="18" font-weight="700" letter-spacing="2">GATINEAU</text>
+                    <text x="120" y="202" text-anchor="middle" fill="#f5e7ae" font-size="9" font-weight="700" letter-spacing="2">SPORT INCLUSIF</text>
+                </svg>
+            </div>
+            <div class="details"><h2>Option 1: Le bouclier</h2><p>Solide et institutionnel. Fonctionne bien sur des chandails, affiches et documents officiels.</p></div>
+        </article>
+        <article>
+            <div class="art circle">
+                <svg viewBox="0 0 240 240" role="img" aria-label="Concept de logo circulaire représentant une communauté">
+                    <circle cx="120" cy="120" r="91" fill="none" stroke="#12314a" stroke-width="8"/>
+                    <circle cx="120" cy="120" r="62" fill="#f7f3ea" stroke="#c9a227" stroke-width="5"/>
+                    <path d="M120 88v61M120 106 83 91M120 106l37-15M120 127 88 153M120 127l32 26M120 78a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" fill="none" stroke="#e76f51" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="120" y="50" text-anchor="middle" fill="#12314a" font-size="13" font-weight="700" letter-spacing="2">GATINEAU</text>
+                    <text x="120" y="207" text-anchor="middle" fill="#12314a" font-size="10" font-weight="700" letter-spacing="1">SPORT POUR TOUS</text>
+                </svg>
+            </div>
+            <div class="details"><h2>Option 2: Le cercle</h2><p>Chaleureux et rassembleur. Le symbole évoque la participation, l’équipe et l’appartenance.</p></div>
+        </article>
+        <article>
+            <div class="art wordmark">
+                <svg viewBox="0 0 300 220" role="img" aria-label="Concept de logo typographique avec une ligne de mouvement">
+                    <path d="M35 116c33-51 61 51 94 0s61 51 94 0" fill="none" stroke="#e76f51" stroke-width="13" stroke-linecap="round"/>
+                    <circle cx="35" cy="116" r="12" fill="#12314a"/>
+                    <text x="150" y="72" text-anchor="middle" fill="#12314a" font-size="30" font-weight="800" letter-spacing="1">GATINEAU</text>
+                    <text x="150" y="165" text-anchor="middle" fill="#12314a" font-size="21" font-weight="700" letter-spacing="3">EN MOUVEMENT</text>
+                </svg>
+            </div>
+            <div class="details"><h2>Option 3: Le mouvement</h2><p>Simple et contemporain. Très lisible dans un en-tête de site, une signature courriel ou les réseaux sociaux.</p></div>
+        </article>
+    </section>
+</main>
+</body>
+</html>

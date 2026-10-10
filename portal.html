@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Gatineau - Espace athlète</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#f7f3ea] text-slate-800 antialiased" data-page-language="portal">
+    <header class="bg-white border-b border-[#eadb9d] shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-14 w-auto object-contain rounded-full shadow-sm">
+                <span class="font-extrabold text-lg tracking-tight text-slate-900">OS Gatineau</span>
+            </a>
+            <a href="index.html" class="text-sm font-bold text-[#12314A] hover:text-[#C9A227]">Retour au site</a>
+        </div>
+    </header>
+
+    <main class="min-h-[calc(100vh-5rem)] py-12 px-4">
+        <section id="login-panel" class="max-w-md mx-auto bg-white border border-[#eadb9d] rounded-2xl shadow-sm p-7 sm:p-9">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#C9A227]">Espace privé</p>
+            <h1 class="text-3xl font-extrabold text-slate-900 mt-2">Espace athlète</h1>
+            <p class="text-slate-600 mt-3 leading-relaxed">Connectez-vous pour consulter votre programme et vos documents personnels.</p>
+            <form id="login-form" class="space-y-4 mt-7">
+                <label class="block text-sm font-semibold text-slate-700">Courriel<input id="email" type="email" autocomplete="email" required class="mt-1.5 w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#12314A]"></label>
+                <label class="block text-sm font-semibold text-slate-700">Mot de passe<input id="password" type="password" autocomplete="current-password" required class="mt-1.5 w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#12314A]"></label>
+                <button type="submit" class="w-full bg-[#12314A] hover:bg-[#0d263b] text-white font-bold py-3 rounded-lg transition">Se connecter</button>
+            </form>
+            <p id="login-status" class="text-sm mt-4" role="status"></p>
+            <p class="text-xs text-slate-500 mt-7 leading-relaxed">Les comptes sont créés sur invitation par OS Gatineau. Pour obtenir un accès, contactez-nous.</p>
+        </section>
+
+        <section id="dashboard-panel" class="hidden max-w-5xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#C9A227]">Espace privé</p>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Bonjour, <span id="athlete-name">athlète</span></h1>
+                    <p class="text-slate-600 mt-2">Voici les programmes qui vous sont destinés.</p>
+                </div>
+                <button id="logout-button" type="button" class="border border-slate-300 text-[#12314A] font-bold px-4 py-2.5 rounded-lg hover:bg-white transition">Se déconnecter</button>
+            </div>
+            <div class="bg-white border border-[#eadb9d] rounded-2xl shadow-sm p-6">
+                <div class="flex items-center justify-between gap-4 mb-5">
+                    <h2 class="text-xl font-extrabold text-slate-900">Mes programmes</h2>
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Privé</span>
+                </div>
+                <div id="workout-list" class="space-y-3"></div>
+                <p id="workout-empty" class="hidden text-slate-600 py-5">Aucun programme n’a encore été ajouté à votre espace.</p>
+            </div>
+
+            <section id="coach-panel" class="hidden bg-white border border-[#eadb9d] rounded-2xl shadow-sm p-6 mt-6">
+                <div class="mb-5">
+                    <p class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">Encadrement</p>
+                    <h2 class="text-xl font-extrabold text-slate-900 mt-1">Ajouter un programme</h2>
+                    <p class="text-sm text-slate-600 mt-1">Attribuez un programme à un athlète précis.</p>
+                </div>
+                <form id="workout-form" class="grid gap-4">
+                    <label class="block text-sm font-semibold text-slate-700">Athlète<select id="athlete-select" required class="mt-1.5 w-full border border-slate-300 rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-[#12314A]"></select></label>
+                    <label class="block text-sm font-semibold text-slate-700">Titre<input id="workout-title" type="text" required class="mt-1.5 w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#12314A]"></label>
+                    <label class="block text-sm font-semibold text-slate-700">Description<textarea id="workout-description" rows="4" class="mt-1.5 w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#12314A]"></textarea></label>
+                        <label class="block text-sm font-semibold text-slate-700">Document (facultatif)<input id="workout-file" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" class="mt-1.5 block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-[#12314A] file:px-4 file:py-2.5 file:font-bold file:text-white hover:file:bg-[#0d263b]"></label>
+                    <button type="submit" class="w-full sm:w-auto sm:justify-self-start bg-[#12314A] hover:bg-[#0d263b] text-white font-bold px-5 py-3 rounded-lg transition">Attribuer le programme</button>
+                </form>
+                <p id="coach-status" class="text-sm mt-4" role="status"></p>
+            </section>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="portal.js"></script>
+</body>
+</html>

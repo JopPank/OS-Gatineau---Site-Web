@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation santé et condition physique - OS Gatineau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#f7f3ea] text-slate-800 antialiased">
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mb-6">
+            <a href="index.html" class="inline-flex items-center text-[#12314A] font-bold hover:text-[#0d263b] transition">&larr; Retour à l'accueil</a>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-[#eadb9d] shadow-lg overflow-hidden">
+            <div class="bg-[#12314A] px-6 py-6 sm:px-8">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#f4e0a5]">OS Gatineau</p>
+                <h1 class="mt-2 text-3xl font-extrabold text-white">Évaluation de santé et de condition physique</h1>
+                <p class="mt-3 text-sm text-slate-200">Ce formulaire aide à documenter l’état général de santé, la préparation physique et les besoins d’accompagnement de l’athlète avant la saison sportive.</p>
+            </div>
+
+            <form id="fitnessForm" class="space-y-8 px-6 py-6 sm:px-8">
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">1. Information de l’athlète</h2>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Nom complet</label>
+                            <input name="fullName" type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Date de naissance</label>
+                            <input name="dob" type="date" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Courriel</label>
+                            <input name="email" type="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Téléphone</label>
+                            <input name="phone" type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">2. Parent ou tuteur</h2>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Nom du parent / tuteur</label>
+                            <input name="guardianName" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Courriel du parent / tuteur</label>
+                            <input name="guardianEmail" type="email" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">3. État de santé</h2>
+
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Conditions médicales actuelles</label>
+                            <textarea name="medicalConditions" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]"></textarea>
+                        </div>
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Médicaments / suppléments</label>
+                            <textarea name="medications" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Avez-vous subi une blessure ou intervention récente?</label>
+                            <select name="recentInjury" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Oui">Oui</option>
+                                <option value="Non">Non</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Si oui, veuillez préciser</label>
+                            <input name="injuryDetails" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">4. Niveau d’activité physique</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Activité physique hebdomadaire</label>
+                            <select name="weeklyActivity" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Moins de 1 heure">Moins de 1 heure</option>
+                                <option value="1 à 3 heures">1 à 3 heures</option>
+                                <option value="3 à 5 heures">3 à 5 heures</option>
+                                <option value="5 heures ou plus">5 heures ou plus</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Sport principal</label>
+                            <input name="sport" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">5. Évaluation de la condition physique</h2>
+
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Endurance cardiovasculaire</label>
+                            <select name="cardio" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Très faible">Très faible</option>
+                                <option value="Faible">Faible</option>
+                                <option value="Moyenne">Moyenne</option>
+                                <option value="Bonne">Bonne</option>
+                                <option value="Très bonne">Très bonne</option>
+                            </select>
+                        </div>
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Force / puissance</label>
+                            <select name="strength" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Très faible">Très faible</option>
+                                <option value="Faible">Faible</option>
+                                <option value="Moyenne">Moyenne</option>
+                                <option value="Bonne">Bonne</option>
+                                <option value="Très bonne">Très bonne</option>
+                            </select>
+                        </div>
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Flexibilité / mobilité</label>
+                            <select name="mobility" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Très limitée">Très limitée</option>
+                                <option value="Limitée">Limitée</option>
+                                <option value="Moyenne">Moyenne</option>
+                                <option value="Bonne">Bonne</option>
+                                <option value="Très bonne">Très bonne</option>
+                            </select>
+                        </div>
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Équilibre / coordination</label>
+                            <select name="balance" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Très faible">Très faible</option>
+                                <option value="Faible">Faible</option>
+                                <option value="Moyenne">Moyenne</option>
+                                <option value="Bonne">Bonne</option>
+                                <option value="Très bonne">Très bonne</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">6. Symptômes et capacité de participation</h2>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Avez-vous de la douleur, de la fatigue, des étourdissements ou un essoufflement au repos?</label>
+                            <select name="symptoms" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                                <option value="">Sélectionner</option>
+                                <option value="Oui">Oui</option>
+                                <option value="Non">Non</option>
+                            </select>
+                        </div>
+                        <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Avez-vous des besoins particuliers ou des accommodements?</label>
+                            <input name="accommodations" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-extrabold text-[#12314A]">7. Déclaration</h2>
+                    <div class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-4 text-sm text-gray-700">
+                        <p>Je confirme que les informations ci-dessus sont exactes et complètes. Je comprends que cette évaluation sert à soutenir la sécurité, la préparation et l’encadrement sportif de l’athlète.</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Nom et signature</label>
+                            <input name="signature" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Date</label>
+                            <input name="declarationDate" type="date" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                        </div>
+                    </div>
+                </section>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 bg-[#12314A] hover:bg-[#0d263b] text-white font-bold py-3 rounded-lg text-sm tracking-wide transition shadow">
+                        Soumettre l’évaluation
+                    </button>
+                    <a href="index.html" class="flex-1 text-center bg-white border border-gray-300 hover:bg-gray-50 text-[#12314A] font-bold py-3 rounded-lg text-sm tracking-wide transition shadow">
+                        Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('fitnessForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const values = {
+                fullName: form.fullName.value.trim(),
+                dob: form.dob.value.trim(),
+                email: form.email.value.trim(),
+                phone: form.phone.value.trim(),
+                guardianName: form.guardianName.value.trim(),
+                guardianEmail: form.guardianEmail.value.trim(),
+                medicalConditions: form.medicalConditions.value.trim(),
+                medications: form.medications.value.trim(),
+                recentInjury: form.recentInjury.value.trim(),
+                injuryDetails: form.injuryDetails.value.trim(),
+                weeklyActivity: form.weeklyActivity.value.trim(),
+                sport: form.sport.value.trim(),
+                cardio: form.cardio.value.trim(),
+                strength: form.strength.value.trim(),
+                mobility: form.mobility.value.trim(),
+                balance: form.balance.value.trim(),
+                symptoms: form.symptoms.value.trim(),
+                accommodations: form.accommodations.value.trim(),
+                signature: form.signature.value.trim(),
+                declarationDate: form.declarationDate.value.trim()
+            };
+
+            const lines = [
+                'Évaluation de santé et de condition physique - OS Gatineau',
+                'Nom complet: ' + values.fullName,
+                'Date de naissance: ' + values.dob,
+                'Courriel: ' + values.email,
+                'Téléphone: ' + (values.phone || 'Non fourni'),
+                'Parent / tuteur: ' + (values.guardianName || 'Non fourni'),
+                'Courriel du parent / tuteur: ' + (values.guardianEmail || 'Non fourni'),
+                '',
+                'Conditions médicales actuelles:',
+                values.medicalConditions || 'Aucune',
+                '',
+                'Médicaments / suppléments:',
+                values.medications || 'Aucun',
+                '',
+                'Blessure récente: ' + (values.recentInjury || 'Non précisé'),
+                'Détails: ' + (values.injuryDetails || 'Aucun'),
+                '',
+                'Activité physique hebdomadaire: ' + (values.weeklyActivity || 'Non précisé'),
+                'Sport principal: ' + (values.sport || 'Non précisé'),
+                '',
+                'Endurance cardiovasculaire: ' + (values.cardio || 'Non précisé'),
+                'Force / puissance: ' + (values.strength || 'Non précisé'),
+                'Flexibilité / mobilité: ' + (values.mobility || 'Non précisé'),
+                'Équilibre / coordination: ' + (values.balance || 'Non précisé'),
+                '',
+                'Symptômes: ' + (values.symptoms || 'Non précisé'),
+                'Accommodements: ' + (values.accommodations || 'Aucun'),
+                '',
+                'Signature: ' + (values.signature || 'Non fournie'),
+                'Date: ' + (values.declarationDate || 'Non fournie')
+            ];
+
+            const subject = encodeURIComponent('Évaluation santé et condition physique - OS Gatineau');
+            const mailto = 'mailto:olympiquesspeciaux.gatineau@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(lines.join('\n'));
+            window.location.href = mailto;
+        });
+    </script>
+</body>
+</html>

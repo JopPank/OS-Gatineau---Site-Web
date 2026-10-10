@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Gatineau - Athlètes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased" data-page-language="athletes">
+    <header class="bg-white shadow-sm border-b border-[#eadb9d] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-14 w-auto object-contain rounded-full shadow-sm">
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg md:text-xl tracking-tight leading-tight text-slate-900">OS Gatineau</span>
+                    <span class="text-xs text-slate-500 font-medium">Olympiques Spéciaux Québec</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-[11px] xl:text-xs tracking-wide whitespace-nowrap">
+                <a href="index.html#about" class="text-slate-700 hover:text-[#C9A227] transition">Mission</a>
+                <a href="index.html#sports" class="text-slate-700 hover:text-[#C9A227] transition">Participez</a>
+                <a href="index.html#gallery" class="text-slate-700 hover:text-[#C9A227] transition">Galerie</a>
+                <a href="index.html#contact" class="text-slate-700 hover:text-[#C9A227] transition">Nous joindre</a>
+                <a href="portal.html" class="text-slate-700 hover:text-[#C9A227] transition">Espace athlète</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button type="button" data-language-toggle class="hidden sm:inline-flex text-xs font-bold border border-gray-300 rounded-full px-3 py-1.5 hover:bg-gray-100 transition" aria-label="Switch to English">EN</button>
+                <a href="index.html" class="hidden sm:inline-flex bg-[#12314A] text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow hover:bg-[#0d263b] transition">Retour</a>
+                <button type="button" data-language-toggle class="sm:hidden text-xs font-bold border border-gray-300 rounded-full px-2.5 py-1.5" aria-label="Switch to English">EN</button>
+                <button type="button" data-menu-toggle aria-controls="athletes-mobile-menu" aria-expanded="false" class="md:hidden text-[#12314A] text-2xl leading-none" aria-label="Ouvrir le menu">&#9776;</button>
+            </div>
+        </div>
+        <nav id="athletes-mobile-menu" class="site-mobile-menu md:hidden bg-white px-4 pb-4" aria-label="Navigation mobile">
+            <a href="index.html#about" class="font-semibold text-gray-700">Mission</a>
+            <a href="index.html#sports" class="font-semibold text-gray-700">Participez</a>
+            <a href="index.html#gallery" class="font-semibold text-gray-700">Galerie</a>
+            <a href="index.html#contact" class="font-semibold text-gray-700">Nous joindre</a>
+            <a href="support.html" class="font-bold text-[#12314A]">Soutien</a>
+            <a href="portal.html" class="font-bold text-[#12314A]">Espace athlète</a>
+        </nav>
+    </header>
+
+    <main class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-[#C9A227] font-bold uppercase tracking-wider text-xs">Athlètes</span>
+                <h1 class="text-4xl font-extrabold text-slate-900 mt-2">Nos athlètes</h1>
+                <p class="text-gray-600 mt-3">Une liste complète pour présenter les athlètes, leur sport et leur parcours au fil du temps.</p>
+            </div>
+
+            <div class="filter-toolbar" aria-label="Filtrer les athlètes">
+                <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">Tous</button>
+                <button type="button" class="filter-button" data-filter="Curling" aria-pressed="false">Curling</button>
+                <button type="button" class="filter-button" data-filter="Natation" aria-pressed="false">Natation</button>
+                <button type="button" class="filter-button" data-filter="Soccer" aria-pressed="false">Soccer</button>
+                <button type="button" class="filter-button" data-filter="Golf" aria-pressed="false">Golf</button>
+                <button type="button" class="filter-button" data-filter="Autres" aria-pressed="false">Autres sports</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Curling">
+                    <div class="h-56 bg-gradient-to-br from-[#f7f3ea] via-white to-[#f5e7ae] flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-2xl font-black text-[#12314A]">AM</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Curling</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Alex Martin</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Athlète motivé qui aime travailler en équipe et améliorer chaque lancer.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Natation">
+                    <div class="h-56 bg-gradient-to-br from-slate-100 via-white to-slate-200 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-slate-200 shadow-sm flex items-center justify-center text-2xl font-black text-slate-700">ST</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Natation</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Sophie Tremblay</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Passionnée de natation, toujours prête à donner le meilleur dans chaque séance.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Soccer">
+                    <div class="h-56 bg-gradient-to-br from-[#F5E7AE] via-white to-[#E8F0F8] flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-2xl font-black text-[#12314A]">MB</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Soccer</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Milo Bernier</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Joueur énergique qui adore la dynamique de jeu et le travail d’équipe.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Golf">
+                    <div class="h-56 bg-gradient-to-br from-[#f7f3ea] via-[#fffaf0] to-[#f5e7ae] flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-2xl font-black text-[#12314A]">EL</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Golf</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Emma Labelle</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Persévérante et calme sous pression, avec un grand amour pour le golf.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Autres">
+                    <div class="h-56 bg-gradient-to-br from-sky-100 via-white to-sky-200 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-sky-200 shadow-sm flex items-center justify-center text-2xl font-black text-sky-700">NC</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Ski de fond</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Nathan Chartrand</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Digne d’admiration pour sa discipline et sa force mentale sur la neige.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Autres">
+                    <div class="h-56 bg-gradient-to-br from-amber-100 via-white to-amber-200 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-amber-200 shadow-sm flex items-center justify-center text-2xl font-black text-amber-700">CD</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Raquette</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Chloé Dubois</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Joueuse souriante qui apporte de la bonne humeur et de l’énergie à chaque match.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Autres">
+                    <div class="h-56 bg-gradient-to-br from-violet-100 via-white to-violet-200 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-violet-200 shadow-sm flex items-center justify-center text-2xl font-black text-violet-700">LG</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Patinage</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Lucas Gagnon</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Très motivé à améliorer sa technique et à célébrer chaque progression.</p>
+                    </div>
+                </div>
+
+                <div class="athlete-card bg-white border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200" data-sport="Autres">
+                    <div class="h-56 bg-gradient-to-br from-emerald-100 via-white to-emerald-200 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/80 border-4 border-emerald-200 shadow-sm flex items-center justify-center text-2xl font-black text-emerald-700">LR</div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Athlétisme</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-2">Leah Roy</h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Fière de sa détermination et toujours prête à repousser ses limites.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

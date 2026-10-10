@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="{ lang: 'fr' }" :lang="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Gatineau - Olympiques Spéciaux</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#f7f3ea] text-slate-800 antialiased" x-data="{ mobileMenuOpen: false, activeFilter: 'all', modalOpen: false, formType: 'athlete', athletes: [ { name: 'Alex Martin', sport: 'Curling', initials: 'AM', photo: '', bio: 'Athlète motivé qui aime travailler en équipe et améliorer chaque lancer.' }, { name: 'Sophie Tremblay', sport: 'Natation', initials: 'ST', photo: '', bio: 'Passionnée de natation, toujours prête à donner le meilleur dans chaque séance.' }, { name: 'Milo Bernier', sport: 'Soccer', initials: 'MB', photo: '', bio: 'Joueur énergique qui adore la dynamique de jeu et le travail d’équipe.' }, { name: 'Emma Labelle', sport: 'Golf', initials: 'EL', photo: '', bio: 'Persévérante et calme sous pression, avec un grand amour pour le golf.' }, { name: 'Nathan Chartrand', sport: 'Ski de fond', initials: 'NC', photo: '', bio: 'Digne d’admiration pour sa discipline et sa force mentale sur la neige.' }, { name: 'Chloé Dubois', sport: 'Raquette', initials: 'CD', photo: '', bio: 'Joueuse souriante qui apporte de la bonne humeur et de l’énergie à chaque match.' }, { name: 'Lucas Gagnon', sport: 'Patinage', initials: 'LG', photo: '', bio: 'Très motivé à améliorer sa technique et à célébrer chaque progression.' }, { name: 'Leah Roy', sport: 'Athlétisme', initials: 'LR', photo: '', bio: 'Fière de sa détermination et toujours prête à repousser ses limites.' } ] }">
+
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b border-[#eadb9d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[72px] md:min-h-[84px] py-3 flex items-center justify-between">
+            
+            <!-- Logo & Title -->
+            <a href="#" class="flex items-center space-x-3 min-w-0">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-12 md:h-14 w-auto object-contain rounded-full shadow-sm flex-shrink-0">
+                <div class="flex flex-col leading-none min-w-0">
+                    <span class="font-extrabold text-base md:text-xl tracking-tight text-slate-900">OS Gatineau</span>
+                    <span class="text-[10px] md:text-xs text-slate-500 font-medium">Olympiques Spéciaux Québec</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav aria-label="Navigation principale" class="hidden md:flex items-center justify-center gap-4 xl:gap-6 font-semibold text-[10px] xl:text-xs tracking-wide whitespace-nowrap">
+                <a href="#about" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a>
+                <a href="#events" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a>
+                <a href="#sports" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
+                <a href="athletes.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Athlètes' : 'Athletes'">Athlètes</a>
+                <a href="portal.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Espace athlète' : 'Athlete portal'">Espace athlète</a>
+                <a href="#gallery" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
+                <a href="support.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Soutien' : 'Support'">Soutien</a>
+                <a href="#contact" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact'">Nous joindre</a>
+            </nav>
+
+            <!-- Right Actions: Language Switcher & CTA Button -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button @click="lang = lang === 'fr' ? 'en' : 'fr'" class="flex items-center space-x-1 text-[10px] font-bold border border-gray-300 rounded-full px-2.5 py-1 hover:bg-gray-100 transition">
+                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span x-text="lang === 'fr' ? 'EN' : 'FR'"></span>
+                </button>
+                <a href="https://www.facebook.com/OlympiqueSpeciauxGatineauOutaouais" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center bg-[#12314A] text-white font-bold text-[10px] uppercase tracking-wider px-3 py-2 rounded-lg shadow hover:bg-[#0d263b] transition">
+                    Facebook
+                </a>
+                <button @click="formType = 'donation'; modalOpen = true" class="bg-[#C9A227] text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 rounded-lg shadow hover:bg-[#b38f1d] transition" x-text="lang === 'fr' ? 'Faire un don' : 'Donate'">Faire un don</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <button @click="lang = lang === 'fr' ? 'en' : 'fr'" class="text-xs font-bold border border-gray-300 rounded-full px-2.5 py-1">
+                    <span x-text="lang === 'fr' ? 'EN' : 'FR'"></span>
+                </button>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen" aria-controls="mobile-menu" aria-label="Ouvrir le menu" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" x-show="mobileMenuOpen" class="md:hidden bg-white border-t border-gray-200 px-4 pt-4 pb-6 space-y-3">
+            <a href="#about" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a>
+            <a href="#events" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a>
+            <a href="#sports" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
+            <a href="#gallery" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
+            <a href="support.html" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Soutien' : 'Support'">Soutien</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact'">Nous joindre</a>
+            <a href="https://www.facebook.com/OlympiqueSpeciauxGatineauOutaouais" target="_blank" rel="noreferrer" @click="mobileMenuOpen = false" class="block font-medium text-gray-700">Facebook</a>
+            <button @click="formType = 'donation'; modalOpen = true; mobileMenuOpen = false" class="block w-full bg-amber-500 text-white font-bold text-xs uppercase tracking-wider py-2.5 rounded-lg text-center">Faire un don</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative text-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" style="background-image: linear-gradient(rgba(15,23,42,0.54), rgba(15,23,42,0.68)), url('hero-athletes.jpg'); background-size: cover; background-position: center 35%; background-repeat: no-repeat; filter: saturate(1.15);">
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-6">
+            <span class="inline-block bg-[#C9A227]/35 border border-[#f3df92]/60 text-[#fff7d6] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm" x-text="lang === 'fr' ? 'Région de l\'Outaouais' : 'Outaouais Region'">Région de l'Outaouais</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]" x-text="lang === 'fr' ? 'Enrichir des vies grâce au pouvoir du sport' : 'Enriching Lives Through The Power of Sport'">
+                Enrichir des vies grâce au pouvoir du sport
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]" x-text="lang === 'fr' ? 'OS Gatineau fait partie d\'Olympiques Spéciaux Québec et crée des moments d\'appartenance, de santé et de succès pour nos athlètes et leurs familles.' : 'OS Gatineau is part of Special Olympics Quebec and creates moments of belonging, health, and achievement for our athletes and their families.'">
+                OS Gatineau fait partie d’Olympiques Spéciaux Québec et crée des moments d’appartenance, de santé et de succès pour nos athlètes et leurs familles.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-stretch gap-4 pt-4">
+                <button @click="formType = 'athlete'; modalOpen = true" class="bg-[#C9A227] hover:bg-[#b38f1d] text-[#12314A] font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir athlète' : 'Become an Athlete'">Je veux devenir athlète</button>
+                <button @click="formType = 'volunteer'; modalOpen = true" class="bg-[#12314A] hover:bg-[#0d263b] border border-[#12314A] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir bénévole' : 'Become a Volunteer'">Je veux devenir bénévole</button>
+            </div>
+            <div class="pt-5 flex flex-col sm:flex-row justify-center items-stretch gap-4 text-center">
+                <a href="sports-registration.html" class="inline-flex items-center justify-center bg-[#0f766e] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
+                    S’inscrire à un sport
+                </a>
+                <a href="fitness-program.html" class="inline-flex items-center justify-center bg-[#6d4c41] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
+                    Programme de préparation physique
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="about" class="relative pt-8 pb-10 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-6">
+                <p class="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs md:text-sm" x-text="lang === 'fr' ? 'Notre mission' : 'Our mission'">Notre mission</p>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight" x-text="lang === 'fr' ? 'Promouvoir le sport pour tous.' : 'Promoting sport for everyone.'">
+                Promouvoir le sport pour tous.
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-3xl text-gray-600 leading-relaxed text-base md:text-lg" x-text="lang === 'fr' ? 'La section de Gatineau de l’Outaouais crée un environnement stimulant, inclusif et accueillant où les athlètes peuvent grandir en confiance, en santé et en fierté.' : 'The Gatineau Outaouais section creates a motivating, inclusive, and welcoming environment where athletes can grow in confidence, health, and pride.'">
+                La section de Gatineau de l’Outaouais crée un environnement stimulant, inclusif et accueillant où les athlètes peuvent grandir en confiance, en santé et en fierté.
+            </p>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+                <div class="bg-[#f7f3ea] border border-[#eadba8] rounded-2xl p-4">
+                    <div class="text-2xl font-extrabold text-[#12314A]">120+</div>
+                    <div class="text-sm text-gray-600" x-text="lang === 'fr' ? 'Athlètes actifs' : 'Active athletes'">Athlètes actifs</div>
+                </div>
+                <div class="bg-[#f7f3ea] border border-[#eadba8] rounded-2xl p-4">
+                    <div class="text-2xl font-extrabold text-[#12314A]">8+</div>
+                    <div class="text-sm text-gray-600" x-text="lang === 'fr' ? 'Disciplines sportives' : 'Sports disciplines'">Disciplines sportives</div>
+                </div>
+                <div class="bg-[#f7f3ea] border border-[#eadba8] rounded-2xl p-4">
+                    <div class="text-2xl font-extrabold text-[#12314A]">100%</div>
+                    <div class="text-sm text-gray-600" x-text="lang === 'fr' ? 'Inclusif et chaleureux' : 'Inclusive and welcoming'">Inclusif et chaleureux</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="relative pt-8 pb-12 bg-gray-50 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Événements à venir' : 'Upcoming events'">Événements à venir</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">15 Sept.</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Rentrée sportive' : 'Season kickoff'">Rentrée sportive</h3>
+                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Première rencontre des athlètes, familles et bénévoles pour lancer la nouvelle saison.' : 'First gathering for athletes, families, and volunteers to kick off the new season.'">Première rencontre des athlètes, familles et bénévoles pour lancer la nouvelle saison.</p>
+                </div>
+
+                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">06 Oct.</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Tournoi de golf communautaire' : 'Community golf tournament'">Tournoi de golf communautaire</h3>
+                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une journée conviviale de sport, de participation et de célébration en partenariat avec la communauté locale.' : 'A friendly day of sport, participation, and celebration in partnership with the local community.'">Une journée conviviale de sport, de participation et de célébration en partenariat avec la communauté locale.</p>
+                </div>
+
+                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">18 Nov.</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Journée de bénévolat' : 'Volunteer appreciation day'">Journée de bénévolat</h3>
+                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une occasion spéciale de remercier les bénévoles et de préparer la suite de la saison avec l’équipe locale.' : 'A special opportunity to thank volunteers and prepare for the next phase of the season with the local team.'">Une occasion spéciale de remercier les bénévoles et de préparer la suite de la saison avec l’équipe locale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Our Mission Section -->
+    <section class="relative pt-8 pb-12 bg-gradient-to-r from-[#12314A] to-[#173e5d] text-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#C9A227]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Aidez-nous à offrir plus d’opportunités sportives' : 'Help us create more opportunities in sport'">Aidez-nous à offrir plus d’opportunités sportives</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                    <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Don' : 'Give'">Don</p>
+                    <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Faire un don' : 'Make a donation'">Faire un don</h3>
+                    <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Votre contribution aide à financer l’équipement, les activités et les occasions de participation pour nos athlètes.' : 'Your contribution helps fund equipment, activities, and participation opportunities for our athletes.'">Votre contribution aide à financer l’équipement, les activités et les occasions de participation pour nos athlètes.</p>
+                    <button @click="formType = 'donation'; modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Soutenir' : 'Support'">Soutenir</button>
+                </div>
+
+                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                    <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Bénévolat' : 'Volunteer'">Bénévolat</p>
+                    <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Devenir bénévole' : 'Become a volunteer'">Devenir bénévole</h3>
+                    <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Offrez votre temps et votre énergie pour aider nos athlètes à participer, grandir et réussir dans une atmosphère inclusive.' : 'Give your time and energy to help our athletes participate, grow, and succeed in an inclusive environment.'">Offrez votre temps et votre énergie pour aider nos athlètes à participer, grandir et réussir dans une atmosphère inclusive.</p>
+                    <button @click="formType = 'volunteer'; modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Participer' : 'Get involved'">Participer</button>
+                </div>
+
+                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                    <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Partenariat' : 'Partnership'">Partenariat</p>
+                    <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Soutenir la mission' : 'Support the mission'">Soutenir la mission</h3>
+                    <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Les entreprises et organismes locaux peuvent jouer un rôle clé dans la création d’expériences sportives accessibles et durables.' : 'Local businesses and organizations can play a key role in creating accessible, inclusive, and sustainable sports experiences.'">Les entreprises et organismes locaux peuvent jouer un rôle clé dans la création d’expériences sportives accessibles et durables.</p>
+                    <button @click="modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact us'">Nous joindre</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports & Programs Section -->
+    <section id="sports" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Nos sports' : 'Our Sports'">Nos sports</h2>
+                <p class="text-gray-600 mt-2" x-text="lang === 'fr' ? 'Découvrez les programmes d\'entraînement et de compétition offerts à travers la région de Gatineau.' : 'Explore training and competition programs offered throughout the Gatineau region.'">Découvrez les programmes d'entraînement et de compétition offerts à Gatineau.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex justify-center space-x-2 mt-4">
+                    <button @click="activeFilter = 'all'" :class="activeFilter === 'all' ? 'bg-[#12314A] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'" class="px-4 py-2 rounded-lg text-sm font-semibold transition" x-text="lang === 'fr' ? 'Tous' : 'All'">Tous</button>
+                    <button @click="activeFilter = 'winter'" :class="activeFilter === 'winter' ? 'bg-[#12314A] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'" class="px-4 py-2 rounded-lg text-sm font-semibold transition" x-text="lang === 'fr' ? 'Hiver' : 'Winter'">Hiver</button>
+                    <button @click="activeFilter = 'summer'" :class="activeFilter === 'summer' ? 'bg-[#12314A] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'" class="px-4 py-2 rounded-lg text-sm font-semibold transition" x-text="lang === 'fr' ? 'Été' : 'Summer'">Été</button>
+                </div>
+            </div>
+
+            <!-- Sports Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Sport 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'winter'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        🥌 <span class="ml-2" x-text="lang === 'fr' ? 'Curling' : 'Curling'">Curling</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison d\'hiver' : 'Winter Season'">Saison d'hiver</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Curling adapté' : 'Adapted Curling'">Curling adapté</h3>
+                            <p class="text-gray-600 text-xs mt-1.5 leading-relaxed" x-text="lang === 'fr' ? 'Apprenez les stratégies, le balayage et le lancer de pierre dans une ambiance conviviale.' : 'Learn strategy, sweeping, and stone delivery in a friendly team environment.'">Apprenez les stratégies et le lancer de pierre.</p>
+                        </div>
+                        <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Aréna local' : '📍 Local Arena'">📍 Aréna local</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'winter'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        ⛸️ <span class="ml-2" x-text="lang === 'fr' ? 'Patinage' : 'Skating'">Patinage</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison d\'hiver' : 'Winter Season'">Saison d'hiver</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Patinage artistique' : 'Figure Skating'">Patinage artistique</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Développez l\'équilibre, la grâce et la technique sur la glace avec des entraîneurs certifiés.' : 'Develop balance, grace, and ice skating skills with certified coaches.'">Développez l'équilibre et la technique sur glace.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Complexe sportif' : '📍 Sports Complex'">📍 Complexe sportif</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'summer'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        🏊 <span class="ml-2" x-text="lang === 'fr' ? 'Natation' : 'Swimming'">Natation</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Annuel' : 'Year-round'">Annuel</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Club de natation' : 'Swimming Club'">Club de natation</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Améliorez vos techniques de nage, l\'endurance et la sécurité aquatique dans la bonne humeur.' : 'Improve swimming strokes, endurance, and water safety in a supportive setting.'">Améliorez vos techniques de nage et l'endurance.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Piscine municipale' : '📍 Community Pool'">📍 Piscine municipale</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'summer'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        ⚽ <span class="ml-2" x-text="lang === 'fr' ? 'Soccer' : 'Soccer'">Soccer</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison estivale' : 'Summer Season'">Saison estivale</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Soccer adapté' : 'Adapted Soccer'">Soccer adapté</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Travaillez la coordination, la passe et le contrôle du ballon dans un cadre inclusif.' : 'Build coordination, passing, and ball control in an inclusive team setting.'">Travaillez la coordination et le contrôle du ballon.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Terrain local' : '📍 Local Field'">📍 Terrain local</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'summer'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        ⛳ <span class="ml-2" x-text="lang === 'fr' ? 'Golf' : 'Golf'">Golf</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison estivale' : 'Summer Season'">Saison estivale</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Golf adapté' : 'Adapted Golf'">Golf adapté</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Travaillez la précision, le rythme et la concentration dans un environnement relaxant.' : 'Develop precision, rhythm, and focus in a relaxed and supportive setting.'">Travaillez la précision et la concentration.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Terrain de golf' : '📍 Golf Course'">📍 Terrain de golf</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'winter'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        🎿 <span class="ml-2" x-text="lang === 'fr' ? 'Ski de fond' : 'Cross-Country Skiing'">Ski de fond</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison d\'hiver' : 'Winter Season'">Saison d'hiver</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Ski de fond adapté' : 'Adapted Cross-Country Skiing'">Ski de fond adapté</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Améliorez l\'endurance, l\'équilibre et la confiance sur la neige en équipe.' : 'Build endurance, balance, and confidence on snow in a supportive group setting.'">Améliorez l'endurance et l'équilibre sur la neige.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Sentiers enneigés' : '📍 Snow Trails'">📍 Sentiers enneigés</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 7 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col hover:-translate-y-1 hover:shadow-lg transition duration-200" x-show="activeFilter === 'all' || activeFilter === 'winter'">
+                    <div class="h-20 bg-slate-800 flex items-center justify-center text-white font-bold text-base tracking-wide leading-none">
+                        🎾 <span class="ml-2" x-text="lang === 'fr' ? 'Raquette' : 'Racquet Sports'">Raquette</span>
+                    </div>
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison d\'hiver' : 'Winter Season'">Saison d'hiver</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Raquette adaptée' : 'Adapted Racquet Sports'">Raquette adaptée</h3>
+                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Travaillez la coordination, la réactivité et le plaisir de jouer en groupe.' : 'Improve coordination, reaction time, and enjoyment of play in a social setting.'">Travaillez la coordination et la réactivité.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Centre sportif' : '📍 Sports Centre'">📍 Centre sportif</span>
+                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="relative pt-8 pb-12 bg-gray-50 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Des athlètes en action' : 'Athletes in action'">Des athlètes en action</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                <img src="gallery-running.jpg" alt="Athlètes courant pendant une course" :alt="lang === 'fr' ? 'Athlètes courant pendant une course' : 'Athletes running in a race'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-skiing.jpg" alt="Athlète en ski pendant une compétition hivernale" :alt="lang === 'fr' ? 'Athlète en ski pendant une compétition hivernale' : 'Athlete skiing in a winter competition'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-team-celebration.jpg" alt="Athlètes célébrant après une activité d’équipe" :alt="lang === 'fr' ? 'Athlètes célébrant après une activité d’équipe' : 'Athletes celebrating after a team event'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-golf.jpg" alt="Photo d’un événement de golf" :alt="lang === 'fr' ? 'Photo d’un événement de golf' : 'Golf event photo'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete Spotlight Section -->
+    <section id="athletes" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Rencontrez nos athlètes' : 'Meet our athletes'">Rencontrez nos athlètes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-44 bg-gradient-to-br from-[#f7f3ea] via-white to-[#f5e7ae] flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-xl font-black text-[#12314A]">AM</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Curling</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Alex Martin</h3>
+                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Athlète motivé qui aime travailler en équipe et améliorer chaque lancer.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-44 bg-gradient-to-br from-slate-100 via-white to-slate-200 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-slate-200 shadow-sm flex items-center justify-center text-xl font-black text-slate-700">ST</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Natation</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Sophie Tremblay</h3>
+                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Passionnée de natation, toujours prête à donner le meilleur dans chaque séance.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-44 bg-gradient-to-br from-[#f5e7ae] via-white to-[#e8f0f8] flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-xl font-black text-[#12314A]">MB</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Soccer</p>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Milo Bernier</h3>
+                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Joueur énergique qui adore la dynamique de jeu et le travail d’équipe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <a href="athletes.html" class="inline-block bg-[#12314A] hover:bg-[#0d263b] text-white font-bold px-6 py-3 rounded-lg shadow transition duration-200" x-text="lang === 'fr' ? 'Voir tous les athlètes' : 'View all athletes'">Voir tous les athlètes</a>
+            </div>
+        </div>
+    </section>
+<!-- Board of Directors Section -->
+<section id="board" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Conseil d\'administration' : 'Board of Directors'">Conseil d'administration</h2>
+            <p class="text-gray-600 mt-2" x-text="lang === 'fr' ? 'Les bénévoles passionnés qui dirigent notre section locale.' : 'The dedicated volunteers leading our local chapter.'">Les bénévoles passionnés qui dirigent notre section locale.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Member Card 1 -->
+            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
+                    JP
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">[Nom du Président]</h3>
+                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Président' : 'President'">Président</span>
+                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
+            </div>
+
+            <!-- Member Card 2 -->
+            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
+                    M
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">[Nom du Vice-président]</h3>
+                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Vice-président(e)' : 'Vice-President'">Vice-président(e)</span>
+                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
+            </div>
+
+            <!-- Member Card 3 -->
+            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
+                    T
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">[Nom du Trésorier]</h3>
+                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Trésorier(ère)' : 'Treasurer'">Trésorier(ère)</span>
+                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Community Support Section -->
+    <section id="community" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Merci à notre communauté' : 'Thank you to our community'">Merci à notre communauté</h2>
+                <p class="text-gray-600 mt-2" x-text="lang === 'fr' ? 'Le dévouement de nos partenaires et organisations locales permet à nos athlètes de vivre des expériences sportives enrichissantes, sécuritaires et inspirantes.' : 'The dedication of our partners and local organizations allows our athletes to experience enriching, safe, and inspiring sports opportunities.'">Le dévouement de nos partenaires et organisations locales permet à nos athlètes de vivre des expériences sportives enrichissantes, sécuritaires et inspirantes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5">
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug">Les Vieux-Moulins Golf Club</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un soutien précieux pour nos activités de golf et pour les moments de rassemblement communautaire qui inspirent nos athlètes.' : 'A valued supporter of our golf activities and the community moments that inspire our athletes.'">Un soutien précieux pour nos activités de golf et pour les moments de rassemblement communautaire qui inspirent nos athlètes.</p>
+                    <a href="https://www.lesvieuxmoulins.ca/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                </div>
+
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug">Bird-y golf</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une collaboration précieuse qui aide à rendre chaque saison plus accessible, accueillante et inspirante pour nos athlètes.' : 'A valued collaboration that helps make each season more accessible, welcoming, and inspiring for our athletes.'">Une collaboration précieuse qui aide à rendre chaque saison plus accessible, accueillante et inspirante pour nos athlètes.</p>
+                    <a href="https://bird-ygolf.ca/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                </div>
+
+                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug">FC Gatineau - Soccer Adapté</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.' : 'An inspiring partnership to promote adapted soccer and encourage inclusion in local sport.'">Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.</p>
+                    <a href="https://www.fcgatineau.ca/9-a-18-ans/soccer-adapte/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- Footer Logo Integration -->
+                        <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-16 w-auto object-contain rounded-full bg-white p-0.5">
+                        <span class="font-extrabold text-lg text-white">OS Gatineau</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" x-text="lang === 'fr' ? 'Section locale affiliée à Olympiques Spéciaux Québec, offrant des programmes sportifs adaptés dans la région de l\'Outaouais.' : 'Local chapter affiliated with Special Olympics Quebec, providing adapted sports programs in the Outaouais region.'">
+                        Section locale affiliée à Olympiques Spéciaux Québec.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4" x-text="lang === 'fr' ? 'Contactez-nous' : 'Contact Us'">Contactez-nous</h4>
+                    <p class="text-gray-400 text-sm">Gatineau, QC, Canada</p>
+                    <p class="text-gray-400 text-sm mt-2">Email: olympiquesspeciaux.gatineau@gmail.com</p>
+                    <a href="https://www.facebook.com/OlympiqueSpeciauxGatineauOutaouais" target="_blank" rel="noreferrer" class="mt-4 inline-block text-[#7cc1ff] hover:text-white text-sm font-medium transition">
+                        Facebook: Olympiques Spéciaux Gatineau
+                    </a>
+                    <div class="mt-4 flex space-x-3">
+                        <button @click="modalOpen = true" class="bg-[#C9A227] hover:bg-[#b38f1d] text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded transition" x-text="lang === 'fr' ? 'Nous écrire' : 'Write to us'">Nous écrire</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4" x-text="lang === 'fr' ? 'Liens Rapides' : 'Quick Links'">Liens Rapides</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a></li>
+                        <li><a href="#events" class="hover:text-white transition" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a></li>
+                        <li><a href="#sports" class="hover:text-white transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 OS Gatineau. <span x-text="lang === 'fr' ? 'Tous droits réservés. Fièrement inspiré par la mission d\'Olympiques Spéciaux.' : 'All rights reserved. Proudly inspired by the Special Olympics mission.'">Tous droits réservés.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Volunteer & Contact Modal -->
+    <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" x-cloak>
+        <div class="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" @click.away="modalOpen = false">
+            <button @click="modalOpen = false" aria-label="Fermer" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold text-lg">&times;</button>
+            
+            <div class="mb-6">
+                <span class="text-[#12314A] font-bold uppercase tracking-wider text-xs" x-text="lang === 'fr' ? 'Implication & Inscription' : 'Involvement & Registration'">Implication</span>
+                <h3 id="contact-modal-title" class="text-2xl font-extrabold text-gray-900 mt-1" x-text="formType === 'donation' ? (lang === 'fr' ? 'Parler d’un don' : 'Talk about a donation') : formType === 'volunteer' ? (lang === 'fr' ? 'Devenir bénévole' : 'Become a volunteer') : (lang === 'fr' ? 'Devenir athlète' : 'Become an athlete')">Devenir athlète</h3>
+                <p class="text-gray-600 text-sm mt-1" x-text="lang === 'fr' ? 'Remplissez les informations ci-dessous pour que l’équipe puisse traiter votre demande plus rapidement.' : 'Fill out the details below so the team can process your request more quickly.'">Remplissez les informations ci-dessous pour que l’équipe puisse traiter votre demande plus rapidement.</p>
+            </div>
+
+            <form @submit.prevent="
+                const form = $event.target;
+                const values = {
+                    fullName: form.querySelector('[name=fullName]').value.trim(),
+                    email: form.querySelector('[name=email]').value.trim(),
+                    phone: form.querySelector('[name=phone]').value.trim(),
+                    sport: form.querySelector('[name=sport]').value.trim(),
+                    athleteStatus: form.querySelector('[name=athleteStatus]:checked')?.value || 'Non précisé',
+                    ageGroup: form.querySelector('[name=ageGroup]').value.trim(),
+                    message: form.querySelector('[name=message]').value.trim()
+                };
+                const subject = formType === 'donation'
+                    ? 'Demande de don - OS Gatineau'
+                    : formType === 'volunteer'
+                        ? 'Demande de bénévolat - OS Gatineau'
+                        : 'Demande d’inscription athlète - OS Gatineau';
+                const body = 'Nom complet: ' + values.fullName + '\n' +
+                    'Courriel: ' + values.email + '\n' +
+                    'Téléphone: ' + values.phone + '\n' +
+                    'Statut: ' + values.athleteStatus + '\n' +
+                    'Sport ou intérêt: ' + values.sport + '\n' +
+                    'Groupe d’âge / date de naissance: ' + values.ageGroup + '\n\n' +
+                    'Message: ' + (values.message || 'Aucun commentaire ajouté.');
+                window.location.href = 'mailto:olympiquesspeciaux.gatineau@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            " class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Prénom et nom' : 'Full Name'">Prénom et nom</label>
+                        <input name="fullName" type="text" required autocomplete="name" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Courriel' : 'Email'">Courriel</label>
+                        <input name="email" type="email" required autocomplete="email" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Téléphone' : 'Phone'">Téléphone</label>
+                        <input name="phone" type="tel" autocomplete="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Sport ou intérêt' : 'Sport or interest'">Sport ou intérêt</label>
+                        <input name="sport" type="text" placeholder="Natation, golf, soccer..." class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                    </div>
+                </div>
+
+                <div x-show="formType === 'athlete'" class="rounded-lg border border-[#eadb9d] bg-[#f7f3ea] p-3">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2" x-text="lang === 'fr' ? 'Je suis' : 'I am'">Je suis</label>
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-700">
+                        <label class="inline-flex items-center gap-2"><input type="radio" name="athleteStatus" value="Athlète" checked class="text-[#12314A]">Athlète</label>
+                        <label class="inline-flex items-center gap-2"><input type="radio" name="athleteStatus" value="Parent / Tuteur" class="text-[#12314A]">Parent / Tuteur</label>
+                        <label class="inline-flex items-center gap-2"><input type="radio" name="athleteStatus" value="Autre" class="text-[#12314A]">Autre</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Groupe d’âge / date de naissance' : 'Age group / birth date'">Groupe d’âge / date de naissance</label>
+                    <input name="ageGroup" type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1" x-text="lang === 'fr' ? 'Informations complémentaires' : 'Additional information'">Informations complémentaires</label>
+                    <textarea name="message" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#12314A]" placeholder="Par exemple : disponibilités, questions, ou détails utiles pour votre demande."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-[#12314A] hover:bg-[#0d263b] text-white font-bold py-3 rounded-lg text-sm tracking-wide transition shadow" x-text="lang === 'fr' ? 'Soumettre ma demande' : 'Submit application'">Soumettre ma demande</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
