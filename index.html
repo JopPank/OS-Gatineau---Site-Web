@@ -35,7 +35,7 @@
             <!-- Desktop Navigation Links -->
             <nav aria-label="Navigation principale" class="hidden md:flex items-center justify-center gap-4 xl:gap-6 font-semibold text-[10px] xl:text-xs tracking-wide whitespace-nowrap">
                 <a href="#about" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a>
-                <a href="#events" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a>
+                <a href="#events" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Activités' : 'Activities'">Activités</a>
                 <a href="#sports" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
                 <a href="athletes.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Athlètes' : 'Athletes'">Athlètes</a>
                 <a href="portal.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Espace athlète' : 'Athlete portal'">Espace athlète</a>
@@ -70,7 +70,7 @@
         <!-- Mobile Menu Drawer -->
         <div id="mobile-menu" x-show="mobileMenuOpen" class="md:hidden bg-white border-t border-gray-200 px-4 pt-4 pb-6 space-y-3">
             <a href="#about" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a>
-            <a href="#events" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a>
+            <a href="#events" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Activités' : 'Activities'">Activités</a>
             <a href="#sports" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
             <a href="#gallery" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
             <a href="support.html" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Soutien' : 'Support'">Soutien</a>
@@ -141,26 +141,22 @@
     <section id="events" class="relative pt-8 pb-12 bg-gray-50 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Événements à venir' : 'Upcoming events'">Événements à venir</h2>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Activités hebdomadaires' : 'Weekly Activities'">Activités hebdomadaires</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">15 Sept.</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Rentrée sportive' : 'Season kickoff'">Rentrée sportive</h3>
-                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Première rencontre des athlètes, familles et bénévoles pour lancer la nouvelle saison.' : 'First gathering for athletes, families, and volunteers to kick off the new season.'">Première rencontre des athlètes, familles et bénévoles pour lancer la nouvelle saison.</p>
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full" x-text="lang === 'fr' ? 'Lundis · 19 h à 20 h' : 'Mondays · 7–8 p.m.'">Lundis · 19 h à 20 h</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Soccer' : 'Soccer'">Soccer</h3>
+                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Complexe Branchaud-Brière' : 'Branchaud-Brière Complex'">Complexe Branchaud-Brière</p>
+                    <a href="https://maps.google.com/?q=499+boulevard+Labrosse+suite+100+Gatineau+QC+J8P+4R1" target="_blank" rel="noreferrer" class="inline-block mt-2 text-sm text-[#12314A] underline underline-offset-2 hover:text-[#C9A227]" x-text="lang === 'fr' ? '499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1' : '499 Labrosse Boulevard, Suite 100, Gatineau, Quebec J8P 4R1'">499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1</a>
                 </div>
 
                 <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">06 Oct.</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Tournoi de golf communautaire' : 'Community golf tournament'">Tournoi de golf communautaire</h3>
-                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une journée conviviale de sport, de participation et de célébration en partenariat avec la communauté locale.' : 'A friendly day of sport, participation, and celebration in partnership with the local community.'">Une journée conviviale de sport, de participation et de célébration en partenariat avec la communauté locale.</p>
-                </div>
-
-                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full">18 Nov.</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Journée de bénévolat' : 'Volunteer appreciation day'">Journée de bénévolat</h3>
-                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une occasion spéciale de remercier les bénévoles et de préparer la suite de la saison avec l’équipe locale.' : 'A special opportunity to thank volunteers and prepare for the next phase of the season with the local team.'">Une occasion spéciale de remercier les bénévoles et de préparer la suite de la saison avec l’équipe locale.</p>
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full" x-text="lang === 'fr' ? 'Vendredis · 19 h à 20 h' : 'Fridays · 7–8 p.m.'">Vendredis · 19 h à 20 h</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Mise en forme' : 'Fitness'">Mise en forme</h3>
+                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'École Carle' : 'École Carle'">École Carle</p>
+                    <a href="https://maps.google.com/?q=306+rue+Jacques-Buteux+Gatineau+QC+J8P+6A2" target="_blank" rel="noreferrer" class="inline-block mt-2 text-sm text-[#12314A] underline underline-offset-2 hover:text-[#C9A227]" x-text="lang === 'fr' ? '306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2' : '306 Jacques-Buteux Street, Gatineau, Quebec J8P 6A2'">306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2</a>
                 </div>
             </div>
         </div>
@@ -506,7 +502,7 @@
                     <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4" x-text="lang === 'fr' ? 'Liens Rapides' : 'Quick Links'">Liens Rapides</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#about" class="hover:text-white transition" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a></li>
-                        <li><a href="#events" class="hover:text-white transition" x-text="lang === 'fr' ? 'Nouvelles' : 'News'">Nouvelles</a></li>
+                        <li><a href="#events" class="hover:text-white transition" x-text="lang === 'fr' ? 'Activités' : 'Activities'">Activités</a></li>
                         <li><a href="#sports" class="hover:text-white transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a></li>
                         <li><a href="#gallery" class="hover:text-white transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a></li>
                     </ul>
