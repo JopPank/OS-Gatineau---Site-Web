@@ -52,6 +52,7 @@ section { scroll-margin-top: 5.5rem; }
 main > section, body > section { position: relative; }
 img { max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
+.hero-cta { min-height: 3.25rem; line-height: 1.25; }
 
 @media (prefers-reduced-motion: no-preference) {
     main > section > div, body > section > div { animation: rise-in 600ms ease both; }

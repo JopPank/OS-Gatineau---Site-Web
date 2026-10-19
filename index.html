@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OS Gatineau - Olympiques Spéciaux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="hero-athletes.jpg" fetchpriority="high">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Alpine.js for interactivity -->
@@ -25,7 +28,7 @@
             
             <!-- Logo & Title -->
             <a href="#" class="flex items-center space-x-3 min-w-0">
-                <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-12 md:h-14 w-auto object-contain rounded-full shadow-sm flex-shrink-0">
+                <img src="site-logo.jpg" alt="OS Gatineau Logo" width="256" height="287" class="h-12 md:h-14 w-auto object-contain rounded-full shadow-sm flex-shrink-0">
                 <div class="flex flex-col leading-none min-w-0">
                     <span class="font-extrabold text-base md:text-xl tracking-tight text-slate-900">OS Gatineau</span>
                     <span class="text-[10px] md:text-xs text-slate-500 font-medium">Olympiques Spéciaux Québec</span>
@@ -91,14 +94,14 @@
                 OS Gatineau fait partie d’Olympiques Spéciaux Québec et crée des moments d’appartenance, de santé et de succès pour nos athlètes et leurs familles.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-stretch gap-4 pt-4">
-                <button @click="formType = 'athlete'; modalOpen = true" class="bg-[#C9A227] hover:bg-[#b38f1d] text-[#12314A] font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir athlète' : 'Become an Athlete'">Je veux devenir athlète</button>
-                <button @click="formType = 'volunteer'; modalOpen = true" class="bg-[#12314A] hover:bg-[#0d263b] border border-[#12314A] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir bénévole' : 'Become a Volunteer'">Je veux devenir bénévole</button>
+                <button @click="formType = 'athlete'; modalOpen = true" class="hero-cta bg-[#C9A227] hover:bg-[#b38f1d] text-[#12314A] font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir athlète' : 'Become an Athlete'">Je veux devenir athlète</button>
+                <button @click="formType = 'volunteer'; modalOpen = true" class="hero-cta bg-[#12314A] hover:bg-[#0d263b] border border-[#12314A] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl text-center whitespace-nowrap" x-text="lang === 'fr' ? 'Je veux devenir bénévole' : 'Become a Volunteer'">Je veux devenir bénévole</button>
             </div>
             <div class="pt-5 flex flex-col sm:flex-row justify-center items-stretch gap-4 text-center">
-                <a href="sports-registration.html" class="inline-flex items-center justify-center bg-[#0f766e] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
+                <a href="sports-registration.html" class="hero-cta inline-flex items-center justify-center bg-[#0f766e] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
                     S’inscrire à un sport
                 </a>
-                <a href="fitness-program.html" class="inline-flex items-center justify-center bg-[#6d4c41] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
+                <a href="fitness-program.html" class="hero-cta inline-flex items-center justify-center bg-[#6d4c41] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5 hover:shadow-xl whitespace-nowrap">
                     Programme de préparation physique
                 </a>
             </div>
@@ -347,10 +350,10 @@
                 <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Des athlètes en action' : 'Athletes in action'">Des athlètes en action</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                <img src="gallery-running.jpg" alt="Athlètes courant pendant une course" :alt="lang === 'fr' ? 'Athlètes courant pendant une course' : 'Athletes running in a race'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-skiing.jpg" alt="Athlète en ski pendant une compétition hivernale" :alt="lang === 'fr' ? 'Athlète en ski pendant une compétition hivernale' : 'Athlete skiing in a winter competition'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-team-celebration.jpg" alt="Athlètes célébrant après une activité d’équipe" :alt="lang === 'fr' ? 'Athlètes célébrant après une activité d’équipe' : 'Athletes celebrating after a team event'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-golf.jpg" alt="Photo d’un événement de golf" :alt="lang === 'fr' ? 'Photo d’un événement de golf' : 'Golf event photo'" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-running.jpg" alt="Athlètes courant pendant une course" :alt="lang === 'fr' ? 'Athlètes courant pendant une course' : 'Athletes running in a race'" width="720" height="480" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-skiing.jpg" alt="Athlète en ski pendant une compétition hivernale" :alt="lang === 'fr' ? 'Athlète en ski pendant une compétition hivernale' : 'Athlete skiing in a winter competition'" width="1500" height="2000" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-team-celebration.jpg" alt="Athlètes célébrant après une activité d’équipe" :alt="lang === 'fr' ? 'Athlètes célébrant après une activité d’équipe' : 'Athletes celebrating after a team event'" width="2048" height="1366" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
+                <img src="gallery-golf.jpg" alt="Photo d’un événement de golf" :alt="lang === 'fr' ? 'Photo d’un événement de golf' : 'Golf event photo'" width="2048" height="1536" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
             </div>
         </div>
     </section>
@@ -480,7 +483,7 @@
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
                         <!-- Footer Logo Integration -->
-                        <img src="site-logo.jpg" alt="OS Gatineau Logo" class="h-16 w-auto object-contain rounded-full bg-white p-0.5">
+                        <img src="site-logo.jpg" alt="OS Gatineau Logo" width="256" height="287" loading="lazy" decoding="async" class="h-16 w-auto object-contain rounded-full bg-white p-0.5">
                         <span class="font-extrabold text-lg text-white">OS Gatineau</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed" x-text="lang === 'fr' ? 'Section locale affiliée à Olympiques Spéciaux Québec, offrant des programmes sportifs adaptés dans la région de l\'Outaouais.' : 'Local chapter affiliated with Special Olympics Quebec, providing adapted sports programs in the Outaouais region.'">
