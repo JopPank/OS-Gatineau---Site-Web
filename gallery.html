@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="{ lang: new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr' }" :lang="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title x-text="lang === 'fr' ? 'OS Gatineau — Galerie' : 'OS Gatineau — Gallery'">OS Gatineau — Galerie</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="season-page">
+    <a href="#main-content" class="skip-link" x-text="lang === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'">Aller au contenu principal</a>
+    <header class="season-header">
+        <div class="season-container season-header-inner">
+            <a href="index.html" :href="'index.html?lang=' + lang">
+                <img src="Logo-OSQ-Center-Outaouais-Center-Black.svg" alt="Olympiques spéciaux Québec — Centre Outaouais" width="218" height="275" class="season-logo">
+            </a>
+            <div class="season-header-actions">
+                <a href="index.html" :href="'index.html?lang=' + lang" x-text="lang === 'fr' ? 'Retour au site' : 'Back to the website'">Retour au site</a>
+                <button type="button" class="season-language" @click="lang = lang === 'fr' ? 'en' : 'fr'; history.replaceState(null, '', '?lang=' + lang + location.hash)" :aria-label="lang === 'fr' ? 'Switch to English' : 'Passer au français'" aria-label="Switch to English" x-text="lang === 'fr' ? 'EN' : 'FR'">EN</button>
+            </div>
+        </div>
+    </header>
+    <main id="main-content" class="season-container season-section">
+        <p class="season-eyebrow" x-text="lang === 'fr' ? 'Galerie photo' : 'Photo gallery'">Galerie photo</p>
+        <h1 class="gallery-title" x-text="lang === 'fr' ? 'Des athlètes en action' : 'Athletes in action'">Des athlètes en action</h1>
+        <p class="season-section-intro" x-text="lang === 'fr' ? 'Des moments de sport, de partage et de fierté dans notre communauté.' : 'Moments of sport, connection, and pride in our community.'">Des moments de sport, de partage et de fierté dans notre communauté.</p>
+        <div class="season-grid season-grid-two gallery-grid">
+            <figure>
+                <a href="gallery-running.jpg">
+                    <img src="gallery-running.jpg" alt="Athlètes courant pendant une course" :alt="lang === 'fr' ? 'Athlètes courant pendant une course' : 'Athletes running in a race'" width="720" height="480" decoding="async">
+                </a>
+                <figcaption x-text="lang === 'fr' ? 'Athlétisme — le plaisir de se dépasser' : 'Track and field — the joy of challenging yourself'">Athlétisme — le plaisir de se dépasser</figcaption>
+            </figure>
+            <figure>
+                <a href="gallery-skiing.jpg">
+                    <img src="gallery-skiing.jpg" alt="Athlète en ski pendant une compétition hivernale" :alt="lang === 'fr' ? 'Athlète en ski pendant une compétition hivernale' : 'Athlete skiing in a winter competition'" width="1500" height="2000" decoding="async">
+                </a>
+                <figcaption x-text="lang === 'fr' ? 'Ski — en action sur la neige' : 'Skiing — in action on the snow'">Ski — en action sur la neige</figcaption>
+            </figure>
+            <figure>
+                <a href="gallery-team-celebration.jpg">
+                    <img src="gallery-team-celebration.jpg" alt="Athlètes célébrant après une activité d’équipe" :alt="lang === 'fr' ? 'Athlètes célébrant après une activité d’équipe' : 'Athletes celebrating after a team event'" width="2048" height="1366" loading="lazy" decoding="async">
+                </a>
+                <figcaption x-text="lang === 'fr' ? 'Célébrer ensemble' : 'Celebrating together'">Célébrer ensemble</figcaption>
+            </figure>
+            <figure>
+                <a href="gallery-golf.jpg">
+                    <img src="gallery-golf.jpg" alt="Photo d’un événement de golf" :alt="lang === 'fr' ? 'Photo d’un événement de golf' : 'Golf event photo'" width="2048" height="1536" loading="lazy" decoding="async">
+                </a>
+                <figcaption x-text="lang === 'fr' ? 'Golf — un moment en équipe' : 'Golf — a team moment'">Golf — un moment en équipe</figcaption>
+            </figure>
+        </div>
+        <p class="season-section-intro" x-text="lang === 'fr' ? 'Sélectionnez une photo pour l’afficher en grand format.' : 'Select a photo to view it at full size.'">Sélectionnez une photo pour l’afficher en grand format.</p>
+    </main>
+    <footer class="season-footer">
+        <p>© 2026 OS Gatineau. <span x-text="lang === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'">Tous droits réservés.</span></p>
+    </footer>
+</body>
+</html>

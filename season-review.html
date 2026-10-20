@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="{ ...seasonContent(), lang: new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr' }" :lang="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Bilan 2025–2026 et perspectives 2026–2027 d’Olympiques spéciaux Québec, section Gatineau. Version de travail à valider.">
+    <title x-text="copy[lang].title">OS Gatineau — Bilan et perspectives</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="season-content.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="season-page">
+    <a href="#main-content" class="skip-link" x-text="copy[lang].skip">Aller au contenu principal</a>
+    <header class="season-header">
+        <div class="season-container season-header-inner">
+            <a href="index.html" :href="'index.html?lang=' + lang">
+                <img src="Logo-OSQ-Center-Outaouais-Center-Black.svg" alt="Olympiques spéciaux Québec — Centre Outaouais" width="218" height="275" class="season-logo">
+            </a>
+            <div class="season-header-actions">
+                <a href="index.html" :href="'index.html?lang=' + lang" x-text="copy[lang].back">Retour au site</a>
+                <button type="button" class="season-language" @click="lang = lang === 'fr' ? 'en' : 'fr'; history.replaceState(null, '', '?lang=' + lang + location.hash)" :aria-label="lang === 'fr' ? 'Switch to English' : 'Passer au français'" aria-label="Switch to English" x-text="lang === 'fr' ? 'EN' : 'FR'">EN</button>
+            </div>
+        </div>
+    </header>
+    <main id="main-content">
+        <section class="season-hero">
+            <div class="season-container">
+                <p class="season-eyebrow" x-text="copy[lang].season">Bilan 2025–2026 · Perspectives 2026–2027</p>
+                <h1 x-text="copy[lang].hero">Ensemble, plus loin.</h1>
+                <p class="season-lead" x-text="copy[lang].heroText">Une saison de participation, de dépassement et de rencontres. Une nouvelle année pour continuer à grandir ensemble.</p>
+            </div>
+        </section>
+        <div class="season-container">
+            <aside class="season-review-note" aria-labelledby="review-heading">
+                <h2 id="review-heading" x-text="copy[lang].review">Version de travail — validation à venir</h2>
+                <p x-text="copy[lang].reviewNote">Les détails des dix événements du bilan ont été confirmés par la section. Les autorisations de publication restent à valider : les noms et témoignages des athlètes ainsi que les nouvelles photos seront ajoutés seulement après cette validation.</p>
+            </aside>
+            <noscript><p class="season-review-note">JavaScript est requis pour afficher le bilan bilingue. Pour obtenir le texte, contactez olympiquesspeciaux.gatineau@gmail.com. / JavaScript is required to display the bilingual review. For a copy, contact olympiquesspeciaux.gatineau@gmail.com.</p></noscript>
+            <nav class="season-jump-links" :aria-label="lang === 'fr' ? 'Dans ce bilan' : 'In this review'" aria-label="Dans ce bilan">
+                <a href="#highlights" x-text="copy[lang].highlightsTitle">Les moments forts de la saison</a>
+                <a href="#sports-progress" x-text="copy[lang].sportsTitle">Nos sports en mouvement</a>
+                <a href="#projects" x-text="copy[lang].projectsTitle">Cap sur 2026–2027</a>
+                <a href="#team" x-text="copy[lang].teamTitle">Conseil d’administration et collaborateurs</a>
+                <a href="#partners" x-text="copy[lang].partnersTitle">Des contributions qui font la différence</a>
+            </nav>
+            <section id="highlights" class="season-section">
+                <h2 x-text="copy[lang].highlightsTitle">Les moments forts de la saison</h2>
+                <p class="season-section-intro" x-text="copy[lang].highlightsIntro"></p>
+                <div class="season-grid season-grid-two">
+                    <template x-for="event in copy[lang].highlights" :key="event.title">
+                        <article class="season-card">
+                            <p class="season-eyebrow" x-text="event.tag"></p>
+                            <h3 x-text="event.title"></h3>
+                            <p x-text="event.text"></p>
+                        </article>
+                    </template>
+                </div>
+            </section>
+            <section id="sports-progress" class="season-section">
+                <h2 x-text="copy[lang].sportsTitle">Nos sports en mouvement</h2>
+                <div class="season-grid">
+                    <template x-for="sport in copy[lang].sports" :key="sport.title">
+                        <article class="season-card">
+                            <p class="season-status" x-text="sport.tag"></p>
+                            <h3 x-text="sport.title"></h3>
+                            <p x-text="sport.text"></p>
+                        </article>
+                    </template>
+                </div>
+            </section>
+            <section id="projects" class="outlook-section" aria-labelledby="outlook-heading">
+                <div class="outlook-header">
+                    <p class="season-eyebrow" x-text="copy[lang].outlookEyebrow">Regard vers l’avenir</p>
+                    <h2 id="outlook-heading" x-text="copy[lang].projectsTitle">Cap sur 2026–2027</h2>
+                    <p x-text="copy[lang].projectsIntro"></p>
+                </div>
+                <div class="outlook-body">
+                <a href="calendar.html" :href="'calendar.html?lang=' + lang" class="season-button" x-text="lang === 'fr' ? 'Consulter le calendrier prévisionnel 2027' : 'View the 2027 planning calendar'">Consulter le calendrier prévisionnel 2027</a>
+                <p class="season-review-note" x-text="copy[lang].outlookNote"></p>
+                <h3 class="outlook-subheading" x-text="copy[lang].outlookPrioritiesTitle">Trois priorités pour avancer ensemble</h3>
+                <div class="season-grid outlook-priorities">
+                    <template x-for="priority in copy[lang].outlookPriorities" :key="priority.title">
+                        <article class="season-card">
+                            <h4 x-text="priority.title"></h4>
+                            <p x-text="priority.text"></p>
+                        </article>
+                    </template>
+                </div>
+                <h3 class="outlook-subheading" x-text="copy[lang].milestonesTitle">Les repères envisagés</h3>
+                <ul class="outlook-milestones">
+                    <template x-for="milestone in copy[lang].milestones" :key="milestone.date">
+                        <li>
+                            <h4 x-text="milestone.date"></h4>
+                            <p x-text="milestone.text"></p>
+                        </li>
+                    </template>
+                </ul>
+                <h3 class="outlook-subheading" x-text="copy[lang].projectsDetailsTitle">Les projets en préparation</h3>
+                <div class="season-grid season-grid-two">
+                    <template x-for="project in copy[lang].projects" :key="project.title">
+                        <article class="season-card">
+                            <p class="season-status" x-text="project.status"></p>
+                            <h4 x-text="project.title"></h4>
+                            <p x-text="project.text"></p>
+                            <ul class="outlook-details">
+                                <template x-for="detail in project.details" :key="detail">
+                                    <li x-text="detail"></li>
+                                </template>
+                            </ul>
+                            <p class="season-target" x-text="project.target"></p>
+                        </article>
+                    </template>
+                </div>
+                <a href="portal.html" class="season-link" x-text="copy[lang].portal">Accéder à l’espace athlète</a>
+                <a href="index.html#contact" :href="'index.html?lang=' + lang + '#contact'" class="season-button outlook-contact" x-text="copy[lang].contact">Nous joindre</a>
+                </div>
+            </section>
+            <section id="team" class="season-section">
+                <h2 x-text="copy[lang].teamTitle">Conseil d’administration et collaborateurs</h2>
+                <p class="season-section-intro" x-text="copy[lang].teamIntro"></p>
+                <div class="season-grid">
+                    <template x-for="person in copy[lang].team" :key="person.role">
+                        <article class="season-card">
+                            <h3 x-text="person.name"></h3>
+                            <p class="season-role" x-text="person.role"></p>
+                            <p x-text="person.text"></p>
+                        </article>
+                    </template>
+                </div>
+            </section>
+            <section id="partners" class="season-section">
+                <h2 x-text="copy[lang].partnersTitle">Des contributions qui font la différence</h2>
+                <p class="season-section-intro" x-text="copy[lang].partnersIntro"></p>
+                <div class="season-grid">
+                    <template x-for="partner in copy[lang].partners" :key="partner.name">
+                        <article class="season-card">
+                            <h3 x-text="partner.name"></h3>
+                            <p class="season-role" x-text="partner.role"></p>
+                            <p x-text="partner.text"></p>
+                            <a :href="partner.website" target="_blank" rel="noreferrer" class="season-link" x-text="copy[lang].visitWebsite"></a>
+                        </article>
+                    </template>
+                </div>
+            </section>
+        </div>
+        <section class="season-thanks">
+            <div class="season-container">
+                <h2 x-text="copy[lang].thanksTitle">Merci de faire partie de l’aventure.</h2>
+                <p x-text="copy[lang].thanksText"></p>
+                <a href="index.html#contact" :href="'index.html?lang=' + lang + '#contact'" class="season-button" x-text="copy[lang].contact">Nous joindre</a>
+            </div>
+        </section>
+    </main>
+    <footer class="season-footer">
+        <p>© 2026 OS Gatineau. <span x-text="copy[lang].rights">Tous droits réservés.</span></p>
+    </footer>
+</body>
+</html>

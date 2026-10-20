@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="calendarContent()" :lang="lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title x-text="copy[lang].title">OS Gatineau — Calendrier prévisionnel 2027</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="calendar.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="season-page calendar-page">
+    <a href="#main-content" class="skip-link" x-text="copy[lang].skip">Aller au contenu principal</a>
+    <header class="season-header">
+        <div class="season-container season-header-inner">
+            <a href="index.html" :href="'index.html?lang=' + lang">
+                <img src="Logo-OSQ-Center-Outaouais-Center-Black.svg" alt="Olympiques spéciaux Québec — Centre Outaouais" width="218" height="275" class="season-logo">
+            </a>
+            <div class="season-header-actions">
+                <a href="index.html" :href="'index.html?lang=' + lang" x-text="copy[lang].back">Retour au site</a>
+                <button type="button" class="season-language" @click="lang = lang === 'fr' ? 'en' : 'fr'; history.replaceState(null, '', '?lang=' + lang + location.hash)" :aria-label="lang === 'fr' ? 'Switch to English' : 'Passer au français'" aria-label="Switch to English" x-text="lang === 'fr' ? 'EN' : 'FR'">EN</button>
+            </div>
+        </div>
+    </header>
+    <main id="main-content">
+        <section class="season-hero">
+            <div class="season-container">
+                <p class="season-eyebrow" x-text="copy[lang].eyebrow">Calendrier prévisionnel · 2027</p>
+                <h1 x-text="copy[lang].heading">Une année pour participer, ensemble.</h1>
+                <p class="season-lead" x-text="copy[lang].intro"></p>
+            </div>
+        </section>
+        <div class="season-container season-section">
+            <aside class="season-review-note">
+                <p x-text="copy[lang].notice">Document de planification — aucun événement 2027 n’est confirmé ici.</p>
+                <p class="planner-national-note" x-text="copy[lang].nationalNote"></p>
+            </aside>
+            <noscript><p>JavaScript est requis pour consulter ce calendrier. Contact : olympiquesspeciaux.gatineau@gmail.com. / JavaScript is required to view this calendar.</p></noscript>
+            <div class="planner-controls" x-cloak>
+                <label><span x-text="copy[lang].category"></span>
+                    <select x-model="category">
+                        <option value="all" x-text="copy[lang].all"></option>
+                        <option value="sport" x-text="copy[lang].sport"></option>
+                        <option value="community" x-text="copy[lang].community"></option>
+                        <option value="development" x-text="copy[lang].development"></option>
+                    </select>
+                </label>
+                <label><span x-text="copy[lang].status"></span>
+                    <select x-model="status">
+                        <option value="all" x-text="copy[lang].all"></option>
+                        <option value="recurring" x-text="copy[lang].recurring"></option>
+                        <option value="proposed" x-text="copy[lang].proposed"></option>
+                        <option value="verify" x-text="copy[lang].verify"></option>
+                    </select>
+                </label>
+                <label><span x-text="copy[lang].period"></span>
+                    <select x-model="period">
+                        <option value="all" x-text="copy[lang].all"></option>
+                        <template x-for="period in periods" :key="period.id">
+                            <option :value="period.id" x-text="period.label[lang]"></option>
+                        </template>
+                    </select>
+                </label>
+            </div>
+            <div class="planner-actions" x-cloak>
+                <button type="button" class="season-language" @click="reset()" x-text="copy[lang].reset"></button>
+                <button type="button" class="season-button" @click="exportCsv()" x-text="copy[lang].export"></button>
+                <button type="button" class="season-language" @click="window.print()" x-text="copy[lang].print"></button>
+            </div>
+            <p class="planner-count" role="status" aria-live="polite" x-text="filteredEvents.length + ' ' + copy[lang].count"></p>
+            <p x-show="filteredEvents.length === 0" x-cloak x-text="copy[lang].empty"></p>
+            <template x-for="group in groups" :key="group.id">
+                <section class="planner-group" :aria-labelledby="'period-' + group.id">
+                    <h2 :id="'period-' + group.id" x-text="group.label[lang] + ' · 2027'"></h2>
+                    <p x-show="group.events.length === 0" x-text="copy[lang].noMonth"></p>
+                    <div class="season-grid season-grid-two">
+                        <template x-for="event in group.events" :key="event.id">
+                            <article class="season-card planner-event">
+                                <p class="season-eyebrow" x-text="copy[lang][event.category]"></p>
+                                <h3 x-text="event.title[lang]"></h3>
+                                <p class="season-status" x-text="copy[lang][event.status]"></p>
+                                <p x-text="event.text[lang]"></p>
+                                <dl>
+                                    <dt x-text="copy[lang].when"></dt><dd x-text="event.timing[lang]"></dd>
+                                    <dt x-text="copy[lang].where"></dt><dd x-text="copy[lang].unknownVenue"></dd>
+                                    <dt x-text="copy[lang].source"></dt><dd x-text="copy[lang][event.status === 'proposed' ? 'outlook' : 'recap']"></dd>
+                                </dl>
+                                <p class="season-target"><strong x-text="copy[lang].next + ' : '"></strong><span x-text="event.next[lang]"></span></p>
+                            </article>
+                        </template>
+                    </div>
+                </section>
+            </template>
+            <aside class="season-review-note">
+                <p x-text="copy[lang].maintenance"></p>
+                <p x-text="copy[lang].weekly"></p>
+                <a href="index.html#events" :href="'index.html?lang=' + lang + '#events'" class="season-link" x-text="copy[lang].weeklyLink">Voir les activités hebdomadaires</a>
+                <a href="season-review.html#projects" :href="'season-review.html?lang=' + lang + '#projects'" class="season-link" x-text="copy[lang].outlookLink">Lire les perspectives 2026–2027</a>
+            </aside>
+        </div>
+    </main>
+    <footer class="season-footer"><p>© 2027 OS Gatineau. <span x-text="copy[lang].rights">Tous droits réservés.</span></p></footer>
+</body>
+</html>

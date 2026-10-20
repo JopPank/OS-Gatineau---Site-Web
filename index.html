@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" x-data="{ lang: 'fr' }" :lang="lang">
+<html lang="fr" x-data="{ lang: new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr' }" :lang="lang">
 <head>
     <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Alpine.js for interactivity -->
+    <script defer src="season-content.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -39,7 +40,7 @@
                 <a href="#sports" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
                 <a href="athletes.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Athlètes' : 'Athletes'">Athlètes</a>
                 <a href="portal.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Espace athlète' : 'Athlete portal'">Espace athlète</a>
-                <a href="#gallery" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
+                <a href="gallery.html" :href="'gallery.html?lang=' + lang" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
                 <a href="support.html" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Soutien' : 'Support'">Soutien</a>
                 <a href="#contact" class="text-slate-700 hover:text-[#C9A227] transition" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact'">Nous joindre</a>
             </nav>
@@ -71,8 +72,10 @@
         <div id="mobile-menu" x-show="mobileMenuOpen" class="md:hidden bg-white border-t border-gray-200 px-4 pt-4 pb-6 space-y-3">
             <a href="#about" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a>
             <a href="#events" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Activités' : 'Activities'">Activités</a>
+            <a href="calendar.html" :href="'calendar.html?lang=' + lang" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Calendrier 2027' : '2027 calendar'">Calendrier 2027</a>
             <a href="#sports" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a>
-            <a href="#gallery" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
+            <a href="athletes.html" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Athlètes' : 'Athletes'">Athlètes</a>
+            <a href="gallery.html" :href="'gallery.html?lang=' + lang" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a>
             <a href="support.html" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Soutien' : 'Support'">Soutien</a>
             <a href="#contact" @click="mobileMenuOpen = false" class="block font-medium text-gray-700" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact'">Nous joindre</a>
             <a href="https://www.facebook.com/OlympiqueSpeciauxGatineauOutaouais" target="_blank" rel="noreferrer" @click="mobileMenuOpen = false" class="block font-medium text-gray-700">Facebook</a>
@@ -142,6 +145,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
                 <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Activités hebdomadaires' : 'Weekly Activities'">Activités hebdomadaires</h2>
+                <a href="calendar.html" :href="'calendar.html?lang=' + lang" class="season-link" x-text="lang === 'fr' ? 'Voir le calendrier prévisionnel 2027' : 'View the 2027 planning calendar'">Voir le calendrier prévisionnel 2027</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -159,6 +163,25 @@
                     <a href="https://maps.google.com/?q=306+rue+Jacques-Buteux+Gatineau+QC+J8P+6A2" target="_blank" rel="noreferrer" class="inline-block mt-2 text-sm text-[#12314A] underline underline-offset-2 hover:text-[#C9A227]" x-text="lang === 'fr' ? '306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2' : '306 Jacques-Buteux Street, Gatineau, Quebec J8P 6A2'">306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="season" class="season-feature" x-data="seasonContent()">
+        <div class="season-container">
+            <p class="season-eyebrow" x-text="copy[lang].community">Notre communauté</p>
+            <h2 x-text="copy[lang].heading">Une communauté en plein élan</h2>
+            <p class="season-feature-intro" x-text="copy[lang].intro">Des moments de fierté, des liens qui grandissent et de nouveaux projets pour nos athlètes.</p>
+            <p class="season-status" x-text="copy[lang].review">Version de travail — validation à venir</p>
+            <div class="season-grid mt-6">
+                <template x-for="item in copy[lang].preview" :key="item.link">
+                    <article class="season-card">
+                        <p class="season-eyebrow" x-text="item.tag"></p>
+                        <h3><a :href="'season-review.html?lang=' + lang + '#' + item.link" class="underline underline-offset-4" x-text="item.title"></a></h3>
+                        <p x-text="item.text"></p>
+                    </article>
+                </template>
+            </div>
+            <a href="season-review.html" :href="'season-review.html?lang=' + lang" class="season-button" x-text="copy[lang].readMore">Découvrir le bilan et nos projets</a>
         </div>
     </section>
 
@@ -236,13 +259,12 @@
                     </div>
                     <div class="p-3 flex-1 flex flex-col justify-between">
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison d\'hiver' : 'Winter Season'">Saison d'hiver</span>
+                            <span class="season-status" x-text="lang === 'fr' ? 'Discussions en cours' : 'Discussions underway'">Discussions en cours</span>
                             <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Patinage artistique' : 'Figure Skating'">Patinage artistique</h3>
-                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Développez l\'équilibre, la grâce et la technique sur la glace avec des entraîneurs certifiés.' : 'Develop balance, grace, and ice skating skills with certified coaches.'">Développez l'équilibre et la technique sur glace.</p>
+                            <p class="text-gray-600 text-sm mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un volet adapté est à l’étude avec le Club de patinage artistique de Hull. Aucun lancement ni inscription ne sont confirmés.' : 'An adapted program is being explored with Club de patinage artistique de Hull. No launch or registration is confirmed.'">Un volet adapté est à l’étude avec le Club de patinage artistique de Hull. Aucun lancement ni inscription ne sont confirmés.</p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-                            <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Complexe sportif' : '📍 Sports Complex'">📍 Complexe sportif</span>
-                            <button @click="modalOpen = true" class="text-[#12314A] hover:text-[#0d263b] font-bold text-xs" x-text="lang === 'fr' ? 'Participer &rarr;' : 'Join &rarr;'">Participer &rarr;</button>
+                            <a href="season-review.html#projects" :href="'season-review.html?lang=' + lang + '#projects'" class="text-[#12314A] font-bold text-sm underline underline-offset-4" x-text="lang === 'fr' ? 'Découvrir le projet' : 'Explore the project'">Découvrir le projet</a>
                         </div>
                     </div>
                 </div>
@@ -274,7 +296,8 @@
                         <div>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-[#12314A] bg-[#f7f3ea] px-2 py-1 rounded" x-text="lang === 'fr' ? 'Saison estivale' : 'Summer Season'">Saison estivale</span>
                             <h3 class="text-lg font-bold text-gray-900 mt-1.5" x-text="lang === 'fr' ? 'Soccer adapté' : 'Adapted Soccer'">Soccer adapté</h3>
-                            <p class="text-gray-600 text-xs mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Travaillez la coordination, la passe et le contrôle du ballon dans un cadre inclusif.' : 'Build coordination, passing, and ball control in an inclusive team setting.'">Travaillez la coordination et le contrôle du ballon.</p>
+                            <p class="text-gray-600 text-sm mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une discipline en forte progression, où la coordination, les passes et l’esprit d’équipe se développent dans un cadre inclusif.' : 'A fast-growing sport where coordination, passing, and teamwork develop in an inclusive setting.'">Une discipline en forte progression, où la coordination, les passes et l’esprit d’équipe se développent dans un cadre inclusif.</p>
+                            <a href="season-review.html#sports-progress" :href="'season-review.html?lang=' + lang + '#sports-progress'" class="inline-block mt-2 text-sm font-bold text-[#12314A] underline underline-offset-4" x-text="lang === 'fr' ? 'Nos perspectives en soccer' : 'Our soccer outlook'">Nos perspectives en soccer</a>
                         </div>
                         <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
                             <span class="text-[10px] text-gray-500 font-medium" x-text="lang === 'fr' ? '📍 Terrain local' : '📍 Local Field'">📍 Terrain local</span>
@@ -340,111 +363,23 @@
         </div>
     </section>
 
-    <!-- Photo Gallery -->
-    <section id="gallery" class="relative pt-8 pb-12 bg-gray-50 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Des athlètes en action' : 'Athletes in action'">Des athlètes en action</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                <img src="gallery-running.jpg" alt="Athlètes courant pendant une course" :alt="lang === 'fr' ? 'Athlètes courant pendant une course' : 'Athletes running in a race'" width="720" height="480" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-skiing.jpg" alt="Athlète en ski pendant une compétition hivernale" :alt="lang === 'fr' ? 'Athlète en ski pendant une compétition hivernale' : 'Athlete skiing in a winter competition'" width="1500" height="2000" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-team-celebration.jpg" alt="Athlètes célébrant après une activité d’équipe" :alt="lang === 'fr' ? 'Athlètes célébrant après une activité d’équipe' : 'Athletes celebrating after a team event'" width="2048" height="1366" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-                <img src="gallery-golf.jpg" alt="Photo d’un événement de golf" :alt="lang === 'fr' ? 'Photo d’un événement de golf' : 'Golf event photo'" width="2048" height="1536" loading="lazy" decoding="async" class="h-64 w-full object-cover rounded-2xl shadow-sm hover:scale-[1.01] transition duration-300">
-            </div>
-        </div>
-    </section>
-
-    <!-- Athlete Spotlight Section -->
-    <section id="athletes" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Rencontrez nos athlètes' : 'Meet our athletes'">Rencontrez nos athlètes</h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-[#f7f3ea] via-white to-[#f5e7ae] flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-xl font-black text-[#12314A]">AM</div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Curling</p>
-                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Alex Martin</h3>
-                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Athlète motivé qui aime travailler en équipe et améliorer chaque lancer.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-slate-100 via-white to-slate-200 flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-slate-200 shadow-sm flex items-center justify-center text-xl font-black text-slate-700">ST</div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Natation</p>
-                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Sophie Tremblay</h3>
-                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Passionnée de natation, toujours prête à donner le meilleur dans chaque séance.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl overflow-hidden shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-[#f5e7ae] via-white to-[#e8f0f8] flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-white/80 border-4 border-[#d7b64b] shadow-sm flex items-center justify-center text-xl font-black text-[#12314A]">MB</div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-[10px] font-bold uppercase tracking-wider text-[#12314A]">Soccer</p>
-                        <h3 class="text-lg font-bold text-gray-900 mt-1.5">Milo Bernier</h3>
-                        <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">Joueur énergique qui adore la dynamique de jeu et le travail d’équipe.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-10 text-center">
-                <a href="athletes.html" class="inline-block bg-[#12314A] hover:bg-[#0d263b] text-white font-bold px-6 py-3 rounded-lg shadow transition duration-200" x-text="lang === 'fr' ? 'Voir tous les athlètes' : 'View all athletes'">Voir tous les athlètes</a>
+    <section id="board" class="season-feature" x-data="seasonContent()">
+        <div class="season-container">
+            <h2 x-text="copy[lang].teamTitle">Conseil d’administration et collaborateurs</h2>
+            <p class="season-feature-intro" x-text="copy[lang].teamIntro">La direction, le conseil et les collaborateurs réunis pour accompagner les athlètes et faire grandir notre section. Les postes non renseignés et les nouveaux rôles restent à confirmer.</p>
+            <div class="season-grid">
+                <template x-for="person in copy[lang].team" :key="person.role">
+                    <article class="season-card">
+                        <h3 x-text="person.name"></h3>
+                        <p class="season-role" x-text="person.role"></p>
+                        <p x-text="person.text"></p>
+                    </article>
+                </template>
             </div>
         </div>
     </section>
-<!-- Board of Directors Section -->
-<section id="board" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Conseil d\'administration' : 'Board of Directors'">Conseil d'administration</h2>
-            <p class="text-gray-600 mt-2" x-text="lang === 'fr' ? 'Les bénévoles passionnés qui dirigent notre section locale.' : 'The dedicated volunteers leading our local chapter.'">Les bénévoles passionnés qui dirigent notre section locale.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Member Card 1 -->
-            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
-                    JP
-                </div>
-                <h3 class="text-lg font-bold text-gray-900">[Nom du Président]</h3>
-                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Président' : 'President'">Président</span>
-                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
-            </div>
-
-            <!-- Member Card 2 -->
-            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
-                    M
-                </div>
-                <h3 class="text-lg font-bold text-gray-900">[Nom du Vice-président]</h3>
-                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Vice-président(e)' : 'Vice-President'">Vice-président(e)</span>
-                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
-            </div>
-
-            <!-- Member Card 3 -->
-            <div class="bg-gray-50 border border-[#eadb9d] rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                <div class="w-20 h-20 bg-[#f7f3ea] text-[#12314A] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border border-[#eadb9d]">
-                    T
-                </div>
-                <h3 class="text-lg font-bold text-gray-900">[Nom du Trésorier]</h3>
-                <span class="text-xs font-bold text-[#12314A] uppercase tracking-wider block mt-1" x-text="lang === 'fr' ? 'Trésorier(ère)' : 'Treasurer'">Trésorier(ère)</span>
-                <p class="text-gray-600 text-sm mt-3" x-text="lang === 'fr' ? 'Court paragraphe de présentation ou historique dans le mouvement.' : 'Short bio or background description.'">Court paragraphe de présentation...</p>
-            </div>
-        </div>
-    </div>
-</section>
     <!-- Community Support Section -->
-    <section id="community" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
+    <section id="community" x-data="seasonContent()" class="relative pt-8 pb-12 bg-white before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#C9A227] before:via-[#d7b64b] before:to-[#f1d98d]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
                 <h2 class="text-3xl font-extrabold text-gray-900 mt-1" x-text="lang === 'fr' ? 'Merci à notre communauté' : 'Thank you to our community'">Merci à notre communauté</h2>
@@ -469,7 +404,17 @@
                     <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.' : 'An inspiring partnership to promote adapted soccer and encourage inclusion in local sport.'">Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.</p>
                     <a href="https://www.fcgatineau.ca/9-a-18-ans/soccer-adapte/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
                 </div>
+                <template x-for="partner in copy[lang].partners" :key="partner.name">
+                    <article class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug" x-text="partner.name"></h3>
+                        <p class="text-sm font-bold text-[#12314A] mt-2" x-text="partner.role"></p>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="partner.text"></p>
+                        <a :href="partner.website" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="copy[lang].visitWebsite"></a>
+                    </article>
+                </template>
             </div>
+            <p class="text-sm text-gray-600 mt-6 leading-relaxed" x-text="copy[lang].partnersIntro">Contributions et collaboration rapportées dans le bilan, à confirmer avant publication définitive. Les discussions pour de futurs projets sont présentées séparément dans les perspectives.</p>
+            <a href="season-review.html#projects" :href="'season-review.html?lang=' + lang + '#projects'" class="season-link" x-text="copy[lang].moreProjects">Voir les projets et leur état d’avancement</a>
         </div>
     </section>
 
@@ -499,8 +444,11 @@
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#about" class="hover:text-white transition" x-text="lang === 'fr' ? 'Mission' : 'Mission'">Mission</a></li>
                         <li><a href="#events" class="hover:text-white transition" x-text="lang === 'fr' ? 'Activités' : 'Activities'">Activités</a></li>
+                        <li><a href="calendar.html" :href="'calendar.html?lang=' + lang" class="hover:text-white transition" x-text="lang === 'fr' ? 'Calendrier 2027' : '2027 calendar'">Calendrier 2027</a></li>
+                        <li><a href="season-review.html" :href="'season-review.html?lang=' + lang" class="hover:text-white transition" x-text="lang === 'fr' ? 'Bilan et perspectives' : 'Season review and outlook'">Bilan et perspectives</a></li>
                         <li><a href="#sports" class="hover:text-white transition" x-text="lang === 'fr' ? 'Participez' : 'Get Involved'">Participez</a></li>
-                        <li><a href="#gallery" class="hover:text-white transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a></li>
+                        <li><a href="athletes.html" class="hover:text-white transition" x-text="lang === 'fr' ? 'Athlètes' : 'Athletes'">Athlètes</a></li>
+                        <li><a href="gallery.html" :href="'gallery.html?lang=' + lang" class="hover:text-white transition" x-text="lang === 'fr' ? 'Galerie' : 'Gallery'">Galerie</a></li>
                     </ul>
                 </div>
             </div>
