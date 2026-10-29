@@ -42,7 +42,6 @@
                 <a href="#highlights" x-text="copy[lang].highlightsTitle">Les moments forts de la saison</a>
                 <a href="#sports-progress" x-text="copy[lang].sportsTitle">Nos sports en mouvement</a>
                 <a href="#projects" x-text="copy[lang].projectsTitle">Cap sur 2026–2027</a>
-                <a href="#team" x-text="copy[lang].teamTitle">Conseil d’administration et collaborateurs</a>
                 <a href="#partners" x-text="copy[lang].partnersTitle">Des contributions qui font la différence</a>
             </nav>
             <section id="highlights" class="season-section">
@@ -115,19 +114,6 @@
                 </div>
                 <a href="portal.html" class="season-link" x-text="copy[lang].portal">Accéder à l’espace athlète</a>
                 <a href="index.html#contact" :href="'index.html?lang=' + lang + '#contact'" class="season-button outlook-contact" x-text="copy[lang].contact">Nous joindre</a>
-                </div>
-            </section>
-            <section id="team" class="season-section">
-                <h2 x-text="copy[lang].teamTitle">Conseil d’administration et collaborateurs</h2>
-                <p class="season-section-intro" x-text="copy[lang].teamIntro"></p>
-                <div class="season-grid">
-                    <template x-for="person in copy[lang].team" :key="person.role">
-                        <article class="season-card">
-                            <h3 x-text="person.name"></h3>
-                            <p class="season-role" x-text="person.role"></p>
-                            <p x-text="person.text"></p>
-                        </article>
-                    </template>
                 </div>
             </section>
             <section id="partners" class="season-section">
