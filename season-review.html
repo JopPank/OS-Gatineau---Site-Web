@@ -121,11 +121,11 @@
                 <p class="season-section-intro" x-text="copy[lang].partnersIntro"></p>
                 <div class="season-grid">
                     <template x-for="partner in copy[lang].partners" :key="partner.name">
-                        <article class="season-card">
+                        <article class="season-card card-clickable">
                             <h3 x-text="partner.name"></h3>
                             <p class="season-role" x-text="partner.role"></p>
                             <p x-text="partner.text"></p>
-                            <a :href="partner.website" target="_blank" rel="noreferrer" class="season-link" x-text="copy[lang].visitWebsite"></a>
+                            <a :href="partner.website" target="_blank" rel="noreferrer" class="card-link season-link" x-text="copy[lang].visitWebsite"></a>
                         </article>
                     </template>
                 </div>

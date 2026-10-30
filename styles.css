@@ -54,6 +54,125 @@ img { max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
 .hero-cta { min-height: 3.25rem; line-height: 1.25; }
 
+.activity-bento {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    grid-auto-rows: minmax(13rem, 1fr);
+    gap: 1.1rem;
+    max-width: 68rem;
+    margin-inline: auto;
+}
+.activity-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: clamp(1.25rem, 2.2vw, 1.75rem);
+    border: 1px solid #eadb9d;
+    border-radius: 1.35rem;
+    background: radial-gradient(ellipse at 100% 0%, #f5e7ae80, transparent 42%), linear-gradient(145deg, #fff 20%, #fffdf7);
+    box-shadow: 0 5px 18px #12314a0a;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+.activity-card::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, #c9a22740, transparent 42%);
+    content: "";
+    opacity: 0.45;
+    transition: opacity 280ms ease;
+}
+.activity-card--featured {
+    grid-row: span 2;
+    min-height: 27.1rem;
+    border-color: #244b64;
+    background: linear-gradient(145deg, #173e5d, #0d263b 78%);
+    color: white;
+    box-shadow: 0 12px 32px #12314a20;
+}
+.activity-card--featured::before {
+    background: radial-gradient(ellipse at 100% 0%, #c9a22775, transparent 48%), radial-gradient(ellipse at 0% 100%, #28587580, transparent 45%);
+    opacity: 0.75;
+}
+.activity-card-topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.activity-day {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+    background: #f7f3ea;
+    color: var(--os-navy);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.055em;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+.activity-card--featured .activity-day { background: #ffffff1c; color: var(--os-gold-light); }
+.activity-icon {
+    display: grid;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid #c9a22755;
+    border-radius: 1rem;
+    background: #fff9e6;
+    color: var(--os-navy);
+    transition: transform 280ms ease, background-color 280ms ease;
+}
+.activity-icon svg { width: 2.25rem; height: 2.25rem; }
+.activity-card--featured .activity-icon { border-color: #f5e7ae55; background: #ffffff12; color: var(--os-gold-light); }
+.activity-card-content { margin-block: 1.5rem; }
+.activity-kicker { margin: 0 0 0.45rem; color: #80620b; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+.activity-card--featured .activity-kicker { color: var(--os-gold-light); }
+.activity-card h3 { margin: 0; color: var(--os-navy); font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.2; }
+.activity-card--featured h3 { color: white; font-size: clamp(2.2rem, 4vw, 3.4rem); }
+.activity-venue { margin: 0.6rem 0 0; color: #526170; font-size: 0.96rem; line-height: 1.6; }
+.activity-card--featured .activity-venue { color: #dce5eb; font-size: 1.05rem; }
+.activity-location {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
+    color: var(--os-navy);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.55;
+    text-decoration: none;
+}
+.activity-location span { text-decoration: underline; text-decoration-color: #c9a22780; text-underline-offset: 0.2em; }
+.activity-location svg { width: 1.25rem; height: 1.25rem; flex: 0 0 auto; transition: transform 220ms ease; }
+.activity-card--featured .activity-location { color: #fff; }
+.activity-card--featured .activity-location span { text-decoration-color: #f5e7aeaa; }
+.activity-card:focus-within { border-color: var(--os-gold); box-shadow: 0 16px 42px #12314a20, 0 0 0 1px #c9a22755, 0 0 32px #c9a22724; }
+.activity-card:focus-visible { outline: 3px solid #f0c94b; outline-offset: 4px; }
+.activity-card:focus-within .activity-location svg { transform: translateX(4px); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .activity-card:hover { transform: translateY(-6px); border-color: var(--os-gold); box-shadow: 0 18px 44px #12314a20, 0 0 0 1px #c9a22755, 0 0 34px #c9a22724; }
+    .activity-card:hover::before { opacity: 1; }
+    .activity-card:hover .activity-icon { transform: rotate(-5deg) scale(1.05); }
+    .activity-card:hover .activity-location svg { transform: translateX(4px); }
+}
+
+/* Stretches a card's primary link/button over the whole card so any part of it is clickable. */
+.card-clickable { position: relative; cursor: pointer; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.card-clickable .card-link::after { position: absolute; z-index: 1; inset: 0; border-radius: inherit; content: ""; }
+.card-clickable .card-link:focus-visible { outline: none; }
+.card-clickable:focus-within { outline: 3px solid #f0c94b; outline-offset: 3px; }
+.card-clickable:hover { border-color: var(--os-gold); box-shadow: 0 14px 34px #12314a1c, 0 0 26px #c9a2271f; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card-clickable:hover { transform: translateY(-4px); }
+}
+
 @media (prefers-reduced-motion: no-preference) {
     main > section > div, body > section > div { animation: rise-in 600ms ease both; }
 }
@@ -142,7 +261,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .season-feature .season-button { margin-top: 1.5rem; }
 .gallery-title { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin: 0 0 1rem; }
 .gallery-grid { margin-block: 2rem; }
-.gallery-grid figure { margin: 0; background: white; border: 1px solid var(--os-line); border-radius: 1rem; overflow: hidden; }
+.gallery-grid figure { position: relative; margin: 0; background: white; border: 1px solid var(--os-line); border-radius: 1rem; overflow: hidden; }
+.gallery-grid figure > a::after { position: absolute; inset: 0; content: ""; }
+.gallery-grid figure:hover { border-color: var(--os-gold); box-shadow: 0 14px 34px #12314a1c, 0 0 26px #c9a2271f; }
 .gallery-grid a { display: block; }
 .gallery-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: #e8edf1; }
 .gallery-grid figcaption { padding: 1rem; line-height: 1.6; font-weight: 600; }
@@ -184,8 +305,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 767px) {
     .planner-controls { grid-template-columns: 1fr; }
     .season-grid, .season-grid-two { grid-template-columns: 1fr; }
+    .activity-bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .activity-card--featured { grid-row: auto; min-height: 21rem; }
+    .activity-card:not(.activity-card--featured) { min-height: 16rem; }
     .season-header-actions { gap: 0.75rem; font-size: 0.85rem; }
     .season-header-actions a { max-width: 150px; }
     .season-section { padding-block: 1.75rem; }
     .season-card { padding: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .activity-card, .activity-card::before, .activity-icon, .activity-location svg, .card-clickable { transition: none; }
 }

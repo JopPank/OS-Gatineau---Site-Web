@@ -148,20 +148,60 @@
                 <a href="calendar.html" :href="'calendar.html?lang=' + lang" class="season-link" x-text="lang === 'fr' ? 'Voir le calendrier prévisionnel 2027' : 'View the 2027 planning calendar'">Voir le calendrier prévisionnel 2027</a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full" x-text="lang === 'fr' ? 'Lundis · 19 h à 20 h' : 'Mondays · 7–8 p.m.'">Lundis · 19 h à 20 h</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Soccer' : 'Soccer'">Soccer</h3>
-                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Complexe Branchaud-Brière' : 'Branchaud-Brière Complex'">Complexe Branchaud-Brière</p>
-                    <a href="https://maps.google.com/?q=499+boulevard+Labrosse+suite+100+Gatineau+QC+J8P+4R1" target="_blank" rel="noreferrer" class="inline-block mt-2 text-sm text-[#12314A] underline underline-offset-2 hover:text-[#C9A227]" x-text="lang === 'fr' ? '499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1' : '499 Labrosse Boulevard, Suite 100, Gatineau, Quebec J8P 4R1'">499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1</a>
-                </div>
+            <div class="activity-bento">
+                <a href="https://maps.google.com/?q=499+boulevard+Labrosse+suite+100+Gatineau+QC+J8P+4R1" target="_blank" rel="noreferrer" class="activity-card activity-card--featured">
+                    <div class="activity-card-topline">
+                        <span class="activity-day" x-text="lang === 'fr' ? 'Lundis · 19 h à 20 h' : 'Mondays · 7–8 p.m.'">Lundis · 19 h à 20 h</span>
+                        <span class="activity-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.8"/><path d="m18 18 6-4 6 4-2 7h-8l-2-7Zm-12 6 8-2 4 5-2 7m26-10-8-2-4 5 2 7M24 42v-9m-6-15-6-5m18 5 6-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <div class="activity-card-content">
+                        <p class="activity-kicker" x-text="lang === 'fr' ? 'Bougez ensemble' : 'Move together'">Bougez ensemble</p>
+                        <h3 x-text="lang === 'fr' ? 'Soccer' : 'Soccer'">Soccer</h3>
+                        <p class="activity-venue" x-text="lang === 'fr' ? 'Complexe Branchaud-Brière' : 'Branchaud-Brière Complex'">Complexe Branchaud-Brière</p>
+                    </div>
+                    <span class="activity-location">
+                        <span x-text="lang === 'fr' ? '499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1' : '499 Labrosse Boulevard, Suite 100, Gatineau, Quebec J8P 4R1'">499, boulevard Labrosse, suite 100, Gatineau (Québec) J8P 4R1</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </a>
 
-                <div class="bg-white border border-[#eadb9d] rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
-                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-[#f7f3ea] text-[#12314A] px-2.5 py-1 rounded-full" x-text="lang === 'fr' ? 'Vendredis · 19 h à 20 h' : 'Fridays · 7–8 p.m.'">Vendredis · 19 h à 20 h</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-3" x-text="lang === 'fr' ? 'Mise en forme' : 'Fitness'">Mise en forme</h3>
-                    <p class="text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'École Carle' : 'École Carle'">École Carle</p>
-                    <a href="https://maps.google.com/?q=306+rue+Jacques-Buteux+Gatineau+QC+J8P+6A2" target="_blank" rel="noreferrer" class="inline-block mt-2 text-sm text-[#12314A] underline underline-offset-2 hover:text-[#C9A227]" x-text="lang === 'fr' ? '306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2' : '306 Jacques-Buteux Street, Gatineau, Quebec J8P 6A2'">306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2</a>
-                </div>
+                <a href="https://maps.google.com/?q=306+rue+Jacques-Buteux+Gatineau+QC+J8P+6A2" target="_blank" rel="noreferrer" class="activity-card">
+                    <div class="activity-card-topline">
+                        <span class="activity-day" x-text="lang === 'fr' ? 'Jeudis · 20 h à 21 h' : 'Thursdays · 8–9 p.m.'">Jeudis · 20 h à 21 h</span>
+                        <span class="activity-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.8"/><path d="M7 17h34M7 31h34M24 6v36M13 10c6 8 6 20 0 28m22-28c-6 8-6 20 0 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                    </div>
+                    <div class="activity-card-content">
+                        <p class="activity-kicker" x-text="lang === 'fr' ? 'À vos paniers' : 'Ready to play'">À vos paniers</p>
+                        <h3 x-text="lang === 'fr' ? 'Basketball' : 'Basketball'">Basketball</h3>
+                        <p class="activity-venue" x-text="lang === 'fr' ? 'École Carle' : 'École Carle'">École Carle</p>
+                    </div>
+                    <span class="activity-location">
+                        <span x-text="lang === 'fr' ? '306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2' : '306 Jacques-Buteux Street, Gatineau, Quebec J8P 6A2'">306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </a>
+
+                <a href="https://maps.google.com/?q=306+rue+Jacques-Buteux+Gatineau+QC+J8P+6A2" target="_blank" rel="noreferrer" class="activity-card">
+                    <div class="activity-card-topline">
+                        <span class="activity-day" x-text="lang === 'fr' ? 'Vendredis · 19 h à 20 h' : 'Fridays · 7–8 p.m.'">Vendredis · 19 h à 20 h</span>
+                        <span class="activity-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none"><path d="M8 19v10m6-14v18m20-18v18m6-14v10M14 24h20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <div class="activity-card-content">
+                        <p class="activity-kicker" x-text="lang === 'fr' ? 'En forme, ensemble' : 'Stronger together'">En forme, ensemble</p>
+                        <h3 x-text="lang === 'fr' ? 'Mise en forme' : 'Fitness'">Mise en forme</h3>
+                        <p class="activity-venue" x-text="lang === 'fr' ? 'École Carle' : 'École Carle'">École Carle</p>
+                    </div>
+                    <span class="activity-location">
+                        <span x-text="lang === 'fr' ? '306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2' : '306 Jacques-Buteux Street, Gatineau, Quebec J8P 6A2'">306, rue Jacques-Buteux, Gatineau (Québec) J8P 6A2</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -174,9 +214,9 @@
             <p class="season-status" x-text="copy[lang].review">Version de travail — validation à venir</p>
             <div class="season-grid mt-6">
                 <template x-for="item in copy[lang].preview" :key="item.link">
-                    <article class="season-card">
+                    <article class="season-card card-clickable">
                         <p class="season-eyebrow" x-text="item.tag"></p>
-                        <h3><a :href="'season-review.html?lang=' + lang + '#' + item.link" class="underline underline-offset-4" x-text="item.title"></a></h3>
+                        <h3><a :href="'season-review.html?lang=' + lang + '#' + item.link" class="card-link underline underline-offset-4" x-text="item.title"></a></h3>
                         <p x-text="item.text"></p>
                     </article>
                 </template>
@@ -193,25 +233,25 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="card-clickable bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
                     <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Don' : 'Give'">Don</p>
                     <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Faire un don' : 'Make a donation'">Faire un don</h3>
                     <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Votre contribution aide à financer l’équipement, les activités et les occasions de participation pour nos athlètes.' : 'Your contribution helps fund equipment, activities, and participation opportunities for our athletes.'">Votre contribution aide à financer l’équipement, les activités et les occasions de participation pour nos athlètes.</p>
-                    <button @click="formType = 'donation'; modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Soutenir' : 'Support'">Soutenir</button>
+                    <button @click="formType = 'donation'; modalOpen = true" class="card-link mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Soutenir' : 'Support'">Soutenir</button>
                 </div>
 
-                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="card-clickable bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
                     <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Bénévolat' : 'Volunteer'">Bénévolat</p>
                     <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Devenir bénévole' : 'Become a volunteer'">Devenir bénévole</h3>
                     <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Offrez votre temps et votre énergie pour aider nos athlètes à participer, grandir et réussir dans une atmosphère inclusive.' : 'Give your time and energy to help our athletes participate, grow, and succeed in an inclusive environment.'">Offrez votre temps et votre énergie pour aider nos athlètes à participer, grandir et réussir dans une atmosphère inclusive.</p>
-                    <button @click="formType = 'volunteer'; modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Participer' : 'Get involved'">Participer</button>
+                    <button @click="formType = 'volunteer'; modalOpen = true" class="card-link mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Participer' : 'Get involved'">Participer</button>
                 </div>
 
-                <div class="bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="card-clickable bg-white/10 border border-[#d9c27f]/30 rounded-2xl p-6 backdrop-blur-sm">
                     <p class="text-[#f4e0a5] text-xs font-bold uppercase tracking-wider" x-text="lang === 'fr' ? 'Partenariat' : 'Partnership'">Partenariat</p>
                     <h3 class="text-2xl font-extrabold mt-2 text-white" x-text="lang === 'fr' ? 'Soutenir la mission' : 'Support the mission'">Soutenir la mission</h3>
                     <p class="text-[#edf3fa] text-sm mt-3 leading-relaxed" x-text="lang === 'fr' ? 'Les entreprises et organismes locaux peuvent jouer un rôle clé dans la création d’expériences sportives accessibles et durables.' : 'Local businesses and organizations can play a key role in creating accessible, inclusive, and sustainable sports experiences.'">Les entreprises et organismes locaux peuvent jouer un rôle clé dans la création d’expériences sportives accessibles et durables.</p>
-                    <button @click="modalOpen = true" class="mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact us'">Nous joindre</button>
+                    <button @click="modalOpen = true" class="card-link mt-5 bg-[#C9A227] text-white font-bold px-4 py-2 rounded-lg shadow-sm hover:bg-[#b38f1d] transition duration-200" x-text="lang === 'fr' ? 'Nous joindre' : 'Contact us'">Nous joindre</button>
                 </div>
             </div>
         </div>
@@ -387,29 +427,29 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5">
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="card-clickable bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm">
                     <h3 class="text-lg font-bold text-gray-900 leading-snug">Les Vieux-Moulins Golf Club</h3>
                     <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un soutien précieux pour nos activités de golf et pour les moments de rassemblement communautaire qui inspirent nos athlètes.' : 'A valued supporter of our golf activities and the community moments that inspire our athletes.'">Un soutien précieux pour nos activités de golf et pour les moments de rassemblement communautaire qui inspirent nos athlètes.</p>
-                    <a href="https://www.lesvieuxmoulins.ca/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                    <a href="https://www.lesvieuxmoulins.ca/" target="_blank" rel="noreferrer" class="card-link inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
                 </div>
 
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="card-clickable bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm">
                     <h3 class="text-lg font-bold text-gray-900 leading-snug">Bird-y golf</h3>
                     <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Une collaboration précieuse qui aide à rendre chaque saison plus accessible, accueillante et inspirante pour nos athlètes.' : 'A valued collaboration that helps make each season more accessible, welcoming, and inspiring for our athletes.'">Une collaboration précieuse qui aide à rendre chaque saison plus accessible, accueillante et inspirante pour nos athlètes.</p>
-                    <a href="https://bird-ygolf.ca/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                    <a href="https://bird-ygolf.ca/" target="_blank" rel="noreferrer" class="card-link inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
                 </div>
 
-                <div class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                <div class="card-clickable bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm">
                     <h3 class="text-lg font-bold text-gray-900 leading-snug">FC Gatineau - Soccer Adapté</h3>
                     <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="lang === 'fr' ? 'Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.' : 'An inspiring partnership to promote adapted soccer and encourage inclusion in local sport.'">Un partenariat inspirant pour promouvoir le soccer adapté et favoriser l’inclusion dans le sport local.</p>
-                    <a href="https://www.fcgatineau.ca/9-a-18-ans/soccer-adapte/" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
+                    <a href="https://www.fcgatineau.ca/9-a-18-ans/soccer-adapte/" target="_blank" rel="noreferrer" class="card-link inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="lang === 'fr' ? 'Visiter le site &rarr;' : 'Visit website &rarr;'">Visiter le site &rarr;</a>
                 </div>
                 <template x-for="partner in copy[lang].partners" :key="partner.name">
-                    <article class="bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-200">
+                    <article class="card-clickable bg-gray-50 border border-[#eadb9d] rounded-2xl p-4 shadow-sm">
                         <h3 class="text-lg font-bold text-gray-900 leading-snug" x-text="partner.name"></h3>
                         <p class="text-sm font-bold text-[#12314A] mt-2" x-text="partner.role"></p>
                         <p class="text-sm text-gray-600 mt-2 leading-relaxed" x-text="partner.text"></p>
-                        <a :href="partner.website" target="_blank" rel="noreferrer" class="inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="copy[lang].visitWebsite"></a>
+                        <a :href="partner.website" target="_blank" rel="noreferrer" class="card-link inline-block mt-3 text-[#12314A] font-bold text-xs hover:text-[#0d263b]" x-text="copy[lang].visitWebsite"></a>
                     </article>
                 </template>
             </div>
